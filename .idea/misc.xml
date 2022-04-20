@@ -4,17 +4,22 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/drawable/add.xml" value="0.1" />
+        <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/drawable/add_box.xml" value="0.1" />
+        <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/drawable/house.xml" value="0.1" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/drawable/ic_baseline_add_box_24.xml" value="0.1" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/drawable/location.xml" value="0.1" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/drawable/menu.xml" value="0.1" />
+        <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/drawable/search.xml" value="0.1" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/drawable/top_shadow_gradient.xml" value="0.24635416666666668" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/layout/activity_main.xml" value="0.234375" />
-        <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/layout/fragment_home.xml" value="0.2" />
+        <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/layout/fragment_home.xml" value="0.264" />
+        <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/layout/fragment_location.xml" value="0.25" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/layout/fragment_login.xml" value="0.264" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/layout/fragment_registration.xml" value="0.264" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/menu/bottom_nav_bar.xml" value="0.264" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/menu/bottom_nav_menu.xml" value="0.234375" />
+        <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/menu/profile_pic_dropdown_menu.xml" value="0.25" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/menu/top_nav_bar.xml" value="0.221875" />
       </map>
     </option>

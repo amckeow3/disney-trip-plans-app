@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "708589517769",
+    "project_id": "disney-trip-planner",
+    "storage_bucket": "disney-trip-planner.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:708589517769:android:b840ef6d5da5bbbf3d0618",
+        "android_client_info": {
+          "package_name": "com.example.disneytripplanner"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "708589517769-3mni0uaac502uvs6ruqkdd9tbehrtmb6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBv3-TXRUXcGUCf_qahrkXlOralcEFsAR4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "708589517769-3mni0uaac502uvs6ruqkdd9tbehrtmb6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
