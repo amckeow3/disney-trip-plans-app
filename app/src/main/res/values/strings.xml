@@ -9,4 +9,9 @@
     <string name="name_txt">Name</string>
     <string name="register">Register</string>
     <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
+    <string name="trip_name">Trip Name</string>
+    <string name="trip_dates">Trip Dates:</string>
+    <string name="end_date">End Date</string>
+    <string name="description">Description</string>
 </resources>

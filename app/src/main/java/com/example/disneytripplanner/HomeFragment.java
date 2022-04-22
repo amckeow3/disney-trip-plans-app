@@ -87,12 +87,6 @@ public class HomeFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         mAuth = FirebaseAuth.getInstance();
-        FirebaseUser user = mAuth.getCurrentUser();
-        String name = user.getDisplayName();
-
-        binding.textViewHello.setText("Hello, " + name + "!");
-
-
     }
 
     @Override
