@@ -77,7 +77,7 @@ public class HomeFragment extends Fragment {
         binding.buttonCreateTrip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mListener.goToCreateTrip();
+                mListener.createNewTrip();
             }
         });
     }
@@ -99,6 +99,6 @@ public class HomeFragment extends Fragment {
     interface HomeFragmentListener {
         void showAccountSetting();
         void goToLogin();
-        void goToCreateTrip();
+        void createNewTrip();
     }
 }
