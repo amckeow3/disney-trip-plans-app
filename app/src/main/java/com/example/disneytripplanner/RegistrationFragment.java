@@ -17,11 +17,17 @@ import android.widget.Toast;
 
 import com.example.disneytripplanner.databinding.FragmentRegistrationBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
 
 public class RegistrationFragment extends Fragment {
     RegistrationFragment.RegistrationFragmentListener mListener;
@@ -80,6 +86,7 @@ public class RegistrationFragment extends Fragment {
                                                         if (task.isSuccessful()) {
                                                             FirebaseUser updatedUser = mAuth.getCurrentUser();
                                                             Log.d(TAG, "User Display Name = " + updatedUser.getDisplayName());
+                                                            createUser();
                                                         }
                                                     }
                                                 });
@@ -112,6 +119,39 @@ public class RegistrationFragment extends Fragment {
         });
 
         return binding.getRoot();
+    }
+
+    private void createUser() {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        mAuth = FirebaseAuth.getInstance();
+
+        FirebaseUser user = mAuth.getCurrentUser();
+        String name = user.getDisplayName();
+        String id = user.getUid();
+        String email = user.getEmail();
+
+        HashMap<String, Object> newUser = new HashMap<>();
+
+        newUser.put("id", id);
+        newUser.put("name", name);
+        newUser.put("email", email);
+
+        db.collection("users")
+                .document(id)
+                .set(newUser)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        Log.d(TAG, "New user was successfully added!");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.d(TAG, "Error creating new user" + e);
+                    }
+                });
+
     }
 
     @Override

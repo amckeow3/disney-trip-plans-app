@@ -13,18 +13,26 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
+import android.text.Editable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.disneytripplanner.databinding.FragmentNewTripBinding;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
@@ -35,18 +43,16 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 
 public class NewTripFragment extends Fragment {
     private static final String TAG = "new trip fragment";
     NewTripFragment.NewTripFragmentListener mListener;
     FragmentNewTripBinding binding;
-
+    private FirebaseAuth mAuth;
     ArrayAdapter<String> arrayAdapter;
     ArrayList<Resort> resorts = new ArrayList<>();
     ArrayList<String> resortNames = new ArrayList<>();
-
-    public static String SIMPLE_DATE_PATTERN = "dd/MM/yyyy";
-    TextView startDate;
     String startDateString;
     String endDateString;
 
@@ -97,17 +103,52 @@ public class NewTripFragment extends Fragment {
 
     public void setStartDate(String date) {
         startDateString = date;
-        Log.d(TAG, "on setStartDate() called: " + startDateString);
-        binding.textViewStartDate.setText(startDateString);
     }
     public void setEndDate(String date) {
         endDateString = date;
     }
 
+    private void createTrip() {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        mAuth = FirebaseAuth.getInstance();
+
+        FirebaseUser user = mAuth.getCurrentUser();
+        String userUid = user.getUid();
+
+        HashMap<String, Object> trip = new HashMap<>();
+
+        String tripName = binding.editTextNewTripName.getText().toString();
+        String startDate = startDateString;
+        String endDate = endDateString;
+        String resort = binding.spinnerResortOptions.getSelectedItem().toString();
+        trip.put("tripName", tripName);
+        trip.put("resort", resort);
+        trip.put("startDate", startDate);
+        trip.put("endDate", endDate);
+
+        db.collection("users")
+                .document(userUid)
+                .collection("trips")
+                .add(trip)
+                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        Log.d(TAG, "New trip was successfully created! --> " + documentReference.getId());
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.d(TAG, "Error creating new trip" + e);
+                    }
+                });
+
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //getDisneyResortOptions();
+        mAuth = FirebaseAuth.getInstance();
     }
 
     @Override
@@ -117,39 +158,54 @@ public class NewTripFragment extends Fragment {
 
         getDisneyResortOptions();
 
-        binding.textViewCancelNewTrip.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mListener.cancelNewTrip();
-            }
-        });
-
-        MaterialDatePicker.Builder<Pair<Long, Long>> materialDateBuilder = MaterialDatePicker.Builder.dateRangePicker();
-        materialDateBuilder.setTitleText("SELECT A DATE");
-        final MaterialDatePicker materialDatePicker = materialDateBuilder.build();
-
-        binding.imageViewCalendar.setOnClickListener(
+        MaterialDatePicker.Builder startDateBuilder = MaterialDatePicker.Builder.datePicker();
+        startDateBuilder.setTitleText("START DATE");
+        final MaterialDatePicker startDatePicker = startDateBuilder.build();
+        binding.editTextStartDate.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
-                        materialDatePicker.show(getChildFragmentManager(), "MATERIAL_DATE_PICKER");
+                        startDatePicker.show(getChildFragmentManager(), "START_DATE_PICKER");
                     }
                 });
 
-        /*
-        materialDatePicker.addOnPositiveButtonClickListener(
+        startDatePicker.addOnPositiveButtonClickListener(
                 new MaterialPickerOnPositiveButtonClickListener() {
                     @SuppressLint("SetTextI18n")
                     @Override
                     public void onPositiveButtonClick(Object selection) {
-                        binding.textViewStartDate.setText(materialDatePicker.getHeaderText());
-                        binding.textViewStartDate.setText(materialDatePicker.);
+                        String start = startDatePicker.getHeaderText();
+                        binding.editTextStartDate.setText(startDatePicker.getHeaderText());
+                        setStartDate(start);
                     }
                 });
 
-         */
+        MaterialDatePicker.Builder endDateBuilder = MaterialDatePicker.Builder.datePicker();
+        endDateBuilder.setTitleText("END DATE");
+        final MaterialDatePicker endDatePicker = endDateBuilder.build();
+        binding.editTextEndDate.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        endDatePicker.show(getChildFragmentManager(), "END_DATE_PICKER");
+                    }
+                });
 
+        endDatePicker.addOnPositiveButtonClickListener(
+                new MaterialPickerOnPositiveButtonClickListener() {
+                    @SuppressLint("SetTextI18n")
+                    @Override
+                    public void onPositiveButtonClick(Object selection) {
+                        String end = endDatePicker.getHeaderText();
+                        binding.editTextEndDate.setText(endDatePicker.getHeaderText());
+                        setEndDate(end);
+                    }
+                });
+
+        /*
+        MaterialDatePicker.Builder<Pair<Long, Long>> materialDateBuilder = MaterialDatePicker.Builder.dateRangePicker();
+        materialDateBuilder.setTitleText("SELECT A DATE");
+        final MaterialDatePicker materialDatePicker = materialDateBuilder.build();
         materialDatePicker.addOnPositiveButtonClickListener(new MaterialPickerOnPositiveButtonClickListener() {
             @Override
             public void onPositiveButtonClick(Object selection) {
@@ -164,6 +220,39 @@ public class NewTripFragment extends Fragment {
 //              Display it by setText
                 binding.textViewStartDate.setText(simpleFormat.format(startDate));
                 binding.textViewEndDate.setText(simpleFormat.format(endDate));
+            }
+        });
+         */
+
+        binding.textViewCancelNewTrip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mListener.cancelNewTrip();
+            }
+        });
+
+        binding.textViewSaveNewTrip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               String tripStartDate = startDateString;
+               String tripEndDate = endDateString;
+               String tripName = binding.editTextNewTripName.getText().toString();
+               String resortName = binding.spinnerResortOptions.getSelectedItem().toString();
+
+               if (tripName.isEmpty()) {
+                    Toast.makeText(getActivity().getApplicationContext(), "Please enter a trip name", Toast.LENGTH_SHORT).show();
+                } else if (tripStartDate.isEmpty()) {
+                    Toast.makeText(getActivity().getApplicationContext(), "Please select a start date", Toast.LENGTH_SHORT).show();
+                } else if (tripEndDate.isEmpty()) {
+                   Toast.makeText(getActivity().getApplicationContext(), "Please select an end date", Toast.LENGTH_SHORT).show();
+               } else if (resortName == "Select a Resort" || resortName.isEmpty()) {
+                   Toast.makeText(getActivity().getApplicationContext(), "Please select a resort", Toast.LENGTH_SHORT).show();
+               }
+               else {
+                    createTrip();
+                    mListener.goToHomePage();
+               }
+
             }
         });
 
@@ -221,5 +310,6 @@ public class NewTripFragment extends Fragment {
 
     interface NewTripFragmentListener {
         void cancelNewTrip();
+        void goToHomePage();
     }
 }
