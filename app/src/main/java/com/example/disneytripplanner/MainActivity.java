@@ -11,9 +11,11 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity implements LoginFragment.LoginFragmentListener, RegistrationFragment.RegistrationFragmentListener, HomeFragment.HomeFragmentListener,
-        AccountFragment.AccountFragmentListener, NewTripFragment.NewTripFragmentListener {
+        AccountFragment.AccountFragmentListener, NewTripFragment.NewTripFragmentListener, MyTripsFragment.MyTripsFragmentListener {
 
     private FirebaseAuth mAuth;
+
+    //#3498DB
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +78,15 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.Log
                 .replace(R.id.rootView, new NewTripFragment(), "new-trip-fragment")
                 .addToBackStack(null)
                 .commit();
+    }
+
+    @Override
+    public void viewMyTrips() {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.rootView, new MyTripsFragment(), "my-trips-fragment")
+                .addToBackStack(null)
+                .commit();
+
     }
 
     @Override

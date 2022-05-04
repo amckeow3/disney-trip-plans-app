@@ -22,6 +22,10 @@ public class Trip {
         this.endDate = endDate;
     }
 
+    public Trip() {
+
+    }
+
     public String getTripName() {
         return tripName;
     }

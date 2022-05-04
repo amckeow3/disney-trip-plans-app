@@ -18,4 +18,8 @@
     <string name="hint_date">dd/mm/yyyy</string>
     <string name="select_dates">Select Trip Dates</string>
     <string name="date_dash">-</string>
+    <string name="my_trips">My Trips</string>
+    <string name="todays_plans">Today\'s Plans</string>
+    <string name="wait_times">Wait Times</string>
+    <string name="park_hours">Park Hours</string>
 </resources>

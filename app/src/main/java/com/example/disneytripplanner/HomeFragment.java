@@ -33,7 +33,6 @@ public class HomeFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         mAuth = FirebaseAuth.getInstance();
     }
 
@@ -80,6 +79,13 @@ public class HomeFragment extends Fragment {
                 mListener.createNewTrip();
             }
         });
+
+        binding.cardViewMyTrips.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mListener.viewMyTrips();
+            }
+        });
     }
 
     @Override
@@ -100,5 +106,6 @@ public class HomeFragment extends Fragment {
         void showAccountSetting();
         void goToLogin();
         void createNewTrip();
+        void viewMyTrips();
     }
 }
