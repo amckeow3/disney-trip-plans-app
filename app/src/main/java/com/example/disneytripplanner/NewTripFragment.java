@@ -241,9 +241,9 @@ public class NewTripFragment extends Fragment {
 
                if (tripName.isEmpty()) {
                     Toast.makeText(getActivity().getApplicationContext(), "Please enter a trip name", Toast.LENGTH_SHORT).show();
-                } else if (tripStartDate.isEmpty()) {
+                } else if (tripStartDate == null) {
                     Toast.makeText(getActivity().getApplicationContext(), "Please select a start date", Toast.LENGTH_SHORT).show();
-                } else if (tripEndDate.isEmpty()) {
+                } else if (tripEndDate == null) {
                    Toast.makeText(getActivity().getApplicationContext(), "Please select an end date", Toast.LENGTH_SHORT).show();
                } else if (resortName == "Select a Resort" || resortName.isEmpty()) {
                    Toast.makeText(getActivity().getApplicationContext(), "Please select a resort", Toast.LENGTH_SHORT).show();

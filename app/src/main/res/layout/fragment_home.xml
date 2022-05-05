@@ -50,11 +50,11 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
-                    android:id="@+id/imageViewAccountPic"
+                    android:id="@+id/imageViewProfileCharacter"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:contentDescription="TODO"
-                    android:src="@drawable/mickey_mouse" />
+                    android:src="@drawable/pascal" />
             </androidx.cardview.widget.CardView>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.navigation.NavigationView>
@@ -83,7 +83,7 @@
                 android:minHeight="48dp"
                 android:src="@drawable/house"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/buttonLocation"
+                app:layout_constraintEnd_toStartOf="@+id/buttonMaps"
                 app:layout_constraintHorizontal_chainStyle="packed"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -91,7 +91,7 @@
                 tools:ignore="SpeakableTextPresentCheck" />
 
             <ImageButton
-                android:id="@+id/buttonLocation"
+                android:id="@+id/buttonMaps"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
@@ -128,7 +128,7 @@
                 app:layout_constraintBottom_toBottomOf="@id/buttonHome"
                 app:layout_constraintEnd_toStartOf="@+id/buttonSearch"
                 app:layout_constraintHorizontal_chainStyle="packed"
-                app:layout_constraintStart_toEndOf="@+id/buttonLocation"
+                app:layout_constraintStart_toEndOf="@+id/buttonMaps"
                 app:layout_constraintTop_toTopOf="@+id/buttonHome"
                 app:tint="@color/light_grey" />
 

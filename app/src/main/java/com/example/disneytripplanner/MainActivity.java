@@ -11,11 +11,14 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity implements LoginFragment.LoginFragmentListener, RegistrationFragment.RegistrationFragmentListener, HomeFragment.HomeFragmentListener,
-        AccountFragment.AccountFragmentListener, NewTripFragment.NewTripFragmentListener, MyTripsFragment.MyTripsFragmentListener {
+        AccountFragment.AccountFragmentListener, NewTripFragment.NewTripFragmentListener, MyTripsFragment.MyTripsFragmentListener, MapFragment.MapFragmentListener,
+        FilterWaitTimesByResortFragment.FilterWaitTimesByResortFragmentListener, FilterWaitTimesByParkFragment.FilterWaitTimesByParkFragmentListener, WaitTimesFragment.WaitTimesFragmentListener {
 
     private FirebaseAuth mAuth;
 
     //#3498DB
+    // https://api.themeparks.wiki/v1/destinations --> Gets all destinations
+    // https://api.themeparks.wiki/v1/entity/e957da41-3552-4cf6-b636-5babc5cbc4e5 --> Example to get wdw data
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,12 +89,35 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.Log
                 .replace(R.id.rootView, new MyTripsFragment(), "my-trips-fragment")
                 .addToBackStack(null)
                 .commit();
+    }
 
+    @Override
+    public void showMaps() {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.rootView, new MapFragment(), "maps-fragment")
+                .addToBackStack(null)
+                .commit();
+    }
+
+    @Override
+    public void selectWaitTimeByResort() {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.rootView, new FilterWaitTimesByResortFragment(), "wait-times-by-resort")
+                .addToBackStack(null)
+                .commit();
     }
 
     @Override
     public void cancelNewTrip() {
         getSupportFragmentManager()
                 .popBackStack();
+    }
+
+    @Override
+    public void sendSelectedResort(Resort resort) {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.rootView, FilterWaitTimesByParkFragment.newInstance(resort), "wait-times-by-park")
+                .addToBackStack(null)
+                .commit();
     }
 }

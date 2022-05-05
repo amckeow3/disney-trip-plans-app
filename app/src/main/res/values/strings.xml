@@ -22,4 +22,6 @@
     <string name="todays_plans">Today\'s Plans</string>
     <string name="wait_times">Wait Times</string>
     <string name="park_hours">Park Hours</string>
+    <string name="account_settings">Account Settings</string>
+    <string name="change_character">Change Character</string>
 </resources>

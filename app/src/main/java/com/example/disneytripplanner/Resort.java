@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 public class Resort {
     String id;
+    String queryId;
+    String slug;
     String resortName;
     ArrayList<Park> parks = new ArrayList<>();
 
@@ -11,15 +13,33 @@ public class Resort {
 
     }
 
-    public Resort(String id, String resortName, ArrayList<Park> parks) {
+    public Resort(String id, String resortName) {
         this.id = id;
+        this.resortName = resortName;
+    }
+
+    public Resort(String id, String queryId, String slug, String resortName, ArrayList<Park> parks) {
+        this.id = id;
+        this.queryId = queryId;
+        this.slug = slug;
         this.resortName = resortName;
         this.parks = parks;
     }
 
-    public Resort(String id, String resortName) {
-        this.id = id;
-        this.resortName = resortName;
+    public String getQueryId() {
+        return queryId;
+    }
+
+    public void setQueryId(String queryId) {
+        this.queryId = queryId;
+    }
+
+    public String getSlug() {
+        return slug;
+    }
+
+    public void setSlug(String slug) {
+        this.slug = slug;
     }
 
     public String getResortName() {
@@ -46,12 +66,16 @@ public class Resort {
         this.id = id;
     }
 
+
     @Override
     public String toString() {
         return "Resort{" +
                 "id='" + id + '\'' +
+                ", queryId='" + queryId + '\'' +
+                ", slug='" + slug + '\'' +
                 ", resortName='" + resortName + '\'' +
                 ", parks=" + parks +
                 '}';
     }
+
 }

@@ -49,10 +49,10 @@ public class HomeFragment extends Fragment {
 
     public void setupUI() {
 
-        binding.imageViewAccountPic.setOnClickListener(new View.OnClickListener() {
+        binding.imageViewProfileCharacter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                PopupMenu popupMenu = new PopupMenu(getActivity().getApplicationContext(), binding.imageViewAccountPic);
+                PopupMenu popupMenu = new PopupMenu(getActivity().getApplicationContext(), binding.imageViewProfileCharacter);
 
                 popupMenu.getMenuInflater().inflate(R.menu.profile_pic_dropdown_menu, popupMenu.getMenu());
                 popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
@@ -86,6 +86,20 @@ public class HomeFragment extends Fragment {
                 mListener.viewMyTrips();
             }
         });
+
+        binding.buttonMaps.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mListener.showMaps();
+            }
+        });
+
+        binding.cardViewWaitTimes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mListener.selectWaitTimeByResort();
+            }
+        });
     }
 
     @Override
@@ -107,5 +121,7 @@ public class HomeFragment extends Fragment {
         void goToLogin();
         void createNewTrip();
         void viewMyTrips();
+        void showMaps();
+        void selectWaitTimeByResort();
     }
 }

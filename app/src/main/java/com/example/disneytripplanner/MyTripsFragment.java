@@ -134,6 +134,10 @@ public class MyTripsFragment extends Fragment {
                     mBinding.imageViewResortImage.setImageResource(R.drawable.disneyland_icon);
                 } else if (resortName.matches("Walt Disney World Resort")) {
                     mBinding.imageViewResortImage.setImageResource(R.drawable.wdw_icon);
+                } else if (resortName.matches("Hong Kong Disneyland Resort")){
+                    mBinding.imageViewResortImage.setImageResource(R.drawable.hk_disneyland);
+                } else if (resortName.matches("Tokyo Disney Resort")) {
+                    mBinding.imageViewResortImage.setImageResource(R.drawable.tokyo_disney);
                 } else {
                     mBinding.imageViewResortImage.setImageResource(R.drawable.wdw_icon);
                 }
