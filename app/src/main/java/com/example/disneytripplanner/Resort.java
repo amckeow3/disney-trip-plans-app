@@ -1,8 +1,9 @@
 package com.example.disneytripplanner;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Resort {
+public class Resort implements Serializable {
     String id;
     String queryId;
     String slug;

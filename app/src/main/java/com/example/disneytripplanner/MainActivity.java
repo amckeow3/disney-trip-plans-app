@@ -120,4 +120,12 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.Log
                 .addToBackStack(null)
                 .commit();
     }
+
+    @Override
+    public void sendSelectedPark(Park park) {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.rootView, WaitTimesFragment.newInstance(park), "wait-times-fragment")
+                .addToBackStack(null)
+                .commit();
+    }
 }

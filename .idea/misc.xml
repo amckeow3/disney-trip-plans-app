@@ -16,6 +16,7 @@
         <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/drawable/search.xml" value="0.1" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/drawable/top_shadow_gradient.xml" value="0.24635416666666668" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/layout/activity_main.xml" value="0.234375" />
+        <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/layout/attraction_line_item.xml" value="0.264" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/layout/fragment_account.xml" value="0.264" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/layout/fragment_create_trip.xml" value="0.264" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/layout/fragment_filter_wait_times_by_park.xml" value="0.20677083333333332" />
@@ -27,6 +28,8 @@
         <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/layout/fragment_my_trips.xml" value="0.264" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/layout/fragment_new_trip.xml" value="0.264" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/layout/fragment_registration.xml" value="0.264" />
+        <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/layout/fragment_wait_times.xml" value="0.25" />
+        <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/layout/park_line_item.xml" value="0.264" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/layout/resort_line_item.xml" value="0.264" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/layout/trip_line_item.xml" value="0.264" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/menu/bottom_nav_bar.xml" value="0.264" />

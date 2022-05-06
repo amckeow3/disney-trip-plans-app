@@ -44,7 +44,7 @@ public class FilterWaitTimesByResortFragment extends Fragment {
         // Required empty public constructor
     }
 
-    public void getResorts() {
+    void getResorts() {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("resorts")
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
@@ -61,8 +61,6 @@ public class FilterWaitTimesByResortFragment extends Fragment {
                             resorts.add(resort);
                         }
 
-                        Log.d(TAG, "Resorts: " + resorts);
-
                         getActivity().runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
@@ -78,9 +76,6 @@ public class FilterWaitTimesByResortFragment extends Fragment {
                 });
 
     }
-
-
-
 
     class ResortsListAdapter extends RecyclerView.Adapter<ResortsListAdapter.ResortsViewHolder> {
         ArrayList<Resort> mResorts;
@@ -144,7 +139,7 @@ public class FilterWaitTimesByResortFragment extends Fragment {
                     @Override
                     public void onClick(View view) {
                         Resort selectedResort = mResort;
-                        Log.d(TAG, "onClick: Selected Forum Id " + selectedResort.resortName);
+                        Log.d(TAG, "onClick: Selected resort --- " + selectedResort.resortName);
                         mListener.sendSelectedResort(selectedResort);
                     }
                 });

@@ -40,7 +40,7 @@ public class MyTripsFragment extends Fragment {
         // Required empty public constructor
     }
 
-    private void getTrips() {
+    void getTrips() {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
 
