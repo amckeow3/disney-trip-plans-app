@@ -6,6 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".MyTripsFragment" >
 
+    <TextView
+        android:id="@+id/textViewBackFromViewTrips"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/back"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/buttonBackFromViewTrips"
+        app:layout_constraintStart_toEndOf="@+id/buttonBackFromViewTrips"
+        app:layout_constraintTop_toTopOf="@+id/buttonBackFromViewTrips" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewTrips"
         android:layout_width="0dp"
@@ -17,10 +27,10 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewBackArrow" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonBackFromViewTrips" />
 
     <androidx.constraintlayout.utils.widget.ImageFilterView
-        android:id="@+id/imageViewAddTripIcon"
+        android:id="@+id/buttonAddTripIcon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -30,12 +40,52 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.utils.widget.ImageFilterView
-        android:id="@+id/imageViewBackArrow"
-        android:layout_width="39dp"
-        android:layout_height="36dp"
+        android:id="@+id/buttonBackFromViewTrips"
+        android:layout_width="34dp"
+        android:layout_height="23dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:src="@drawable/arrow_back"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewNoTrips"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:text="@string/no_trips_yet"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewNoTripsSub"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="32dp"
+        android:text="@string/plan_trip_string"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewNoTrips" />
+
+    <Button
+        android:id="@+id/buttonCreateFirstTrip"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="@color/blue_400"
+        android:text="@string/create_my_first_trip"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/textViewNoTripsSub"
+        app:layout_constraintStart_toStartOf="@+id/textViewNoTripsSub"
+        app:layout_constraintTop_toBottomOf="@+id/textViewNoTripsSub" />
 </androidx.constraintlayout.widget.ConstraintLayout>

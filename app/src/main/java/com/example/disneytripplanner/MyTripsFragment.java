@@ -66,12 +66,26 @@ public class MyTripsFragment extends Fragment {
                         getActivity().runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
+
                                 recyclerView = binding.recyclerViewTrips;
                                 recyclerView.setHasFixedSize(true);
                                 linearLayoutManager = new LinearLayoutManager(getContext());
                                 recyclerView.setLayoutManager(linearLayoutManager);
                                 tripsListAdapter = new TripsListAdapter(trips);
                                 recyclerView.setAdapter(tripsListAdapter);
+
+                                if (trips.isEmpty()) {
+                                    recyclerView.setVisibility(View.GONE);
+                                    binding.textViewNoTrips.setVisibility(View.VISIBLE);
+                                    binding.buttonCreateFirstTrip.setVisibility(View.VISIBLE);
+                                    binding.textViewNoTripsSub.setVisibility(View.VISIBLE);
+                                }
+                                else {
+                                    recyclerView.setVisibility(View.VISIBLE);
+                                    binding.textViewNoTrips.setVisibility(View.GONE);
+                                    binding.buttonCreateFirstTrip.setVisibility(View.GONE);
+                                    binding.textViewNoTripsSub.setVisibility(View.GONE);
+                                }
                             }
                         });
                     }
@@ -153,14 +167,21 @@ public class MyTripsFragment extends Fragment {
     }
 
     public void setupUI() {
-        binding.imageViewAddTripIcon.setOnClickListener(new View.OnClickListener() {
+        binding.buttonAddTripIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mListener.createNewTrip();
             }
         });
 
-        binding.imageViewBackArrow.setOnClickListener(new View.OnClickListener() {
+        binding.buttonBackFromViewTrips.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mListener.goToHomePage();
+            }
+        });
+
+        binding.textViewBackFromViewTrips.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mListener.goToHomePage();

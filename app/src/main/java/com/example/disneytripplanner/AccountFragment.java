@@ -76,6 +76,13 @@ public class AccountFragment extends Fragment {
             }
         });
 
+        binding.textViewHomeFromAccountView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mListener.goToHomePage();
+            }
+        });
+
         binding.textViewChangeCharacter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
