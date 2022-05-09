@@ -24,4 +24,7 @@
     <string name="park_hours">Park Hours</string>
     <string name="account_settings">Account Settings</string>
     <string name="change_character">Change Character</string>
+    <string name="parks">Parks</string>
+    <string name="resorts">Resorts</string>
+    <string name="back">Back</string>
 </resources>

@@ -48,6 +48,7 @@ public class WaitTimesFragment extends Fragment {
     String queueTimesApiId;
 
     ArrayList<Attraction> attractions = new ArrayList<>();
+    ArrayList<Attraction> allAttractions = new ArrayList<>();
 
     AttractionsListAdapter attractionsListAdapter;
     LinearLayoutManager linearLayoutManager;
@@ -105,25 +106,26 @@ public class WaitTimesFragment extends Fragment {
 
                         for (int i = 0; i < landsJsonArray.length(); i++) {
                             JSONObject landJsonObject = landsJsonArray.getJSONObject(i);
-                            Attraction attraction = new Attraction();
+                            //Attraction attraction = new Attraction();
 
-                            attraction.setLand(landJsonObject.getString("name"));
+                            //attraction.setLand(landJsonObject.getString("name"));
                             String attractionsStr = landJsonObject.getString("rides");
                             JSONArray attractionsJsonArray = new JSONArray(attractionsStr);
 
                             for (int j = 0; j < attractionsJsonArray.length(); j++) {
+                                Attraction attraction = new Attraction();
                                 JSONObject attractionJSONObject = attractionsJsonArray.getJSONObject(j);
-                                String nameStr = attractionJSONObject.getString("name");
-                                Log.d(TAG, "Attraction Name ====> " + nameStr);
-                                attraction.setName(nameStr);
+
+                                attraction.setLand(landJsonObject.getString("name"));
+                                attraction.setName(attractionJSONObject.getString("name"));
                                 attraction.setOpen(attractionJSONObject.getBoolean("is_open"));
-                                attraction.setWaitTime(attractionJSONObject.getString("wait_time"));
-                                Log.d(TAG, "Attraction info ==================>>>>>> " + attraction);
+                                attraction.setWaitTime(attractionJSONObject.getInt("wait_time"));
+
+                                Log.d(TAG, "Attraction info ==================>>>>>> " + attraction.toString());
+
                                 attractions.add(attraction);
                             }
-
                         }
-
 
                         getActivity().runOnUiThread(new Runnable() {
                             @Override
@@ -186,7 +188,7 @@ public class WaitTimesFragment extends Fragment {
                 mAttraction = attraction;
                 mBinding.textViewAttractionName.setText(mAttraction.name);
                 mBinding.textViewAttractionLand.setText(mAttraction.land);
-                mBinding.textViewWaitTime.setText(mAttraction.waitTime);
+                mBinding.textViewWaitTime.setText(String.valueOf(mAttraction.waitTime));
             }
         }
     }
@@ -199,7 +201,25 @@ public class WaitTimesFragment extends Fragment {
 
         getPostsList(queueTimesApiId);
 
+        setupUI();
+
         return binding.getRoot();
+    }
+
+    void setupUI() {
+        binding.buttonBackToParkOptions.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mListener.goBackToParkOptions();
+            }
+        });
+
+        binding.textViewBackToParkOptions.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mListener.goBackToParkOptions();
+            }
+        });
     }
 
     @Override
@@ -214,6 +234,6 @@ public class WaitTimesFragment extends Fragment {
     }
 
     interface WaitTimesFragmentListener {
-
+        void goBackToParkOptions();
     }
 }

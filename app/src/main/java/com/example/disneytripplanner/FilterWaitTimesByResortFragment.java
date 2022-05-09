@@ -159,8 +159,25 @@ public class FilterWaitTimesByResortFragment extends Fragment {
         binding = FragmentFilterWaitTimesByResortBinding.inflate(inflater, container, false);
 
         getResorts();
+        setupUI();
 
         return binding.getRoot();
+    }
+
+    void setupUI() {
+        binding.buttonWaitTimesBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mListener.goToHomePage();
+            }
+        });
+
+        binding.textViewWaitTimesBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mListener.goToHomePage();
+            }
+        });
     }
 
     @Override
@@ -176,5 +193,6 @@ public class FilterWaitTimesByResortFragment extends Fragment {
 
     interface FilterWaitTimesByResortFragmentListener {
         void sendSelectedResort(Resort resort);
+        void goToHomePage();
     }
 }

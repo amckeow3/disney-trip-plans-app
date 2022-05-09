@@ -8,14 +8,34 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewParks"
-        android:layout_width="388dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonBackToResortOptions" />
+
+    <TextView
+        android:id="@+id/textViewBackToResortOptions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/resorts"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/buttonBackToResortOptions"
+        app:layout_constraintStart_toEndOf="@+id/buttonBackToResortOptions"
+        app:layout_constraintTop_toTopOf="@+id/buttonBackToResortOptions" />
+
+    <androidx.constraintlayout.utils.widget.ImageFilterView
+        android:id="@+id/buttonBackToResortOptions"
+        android:layout_width="28dp"
+        android:layout_height="18dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/arrow_back"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

@@ -154,8 +154,25 @@ public class FilterWaitTimesByParkFragment extends Fragment {
         binding = FragmentFilterWaitTimesByParkBinding.inflate(inflater, container, false);
 
         getParkOptions(resortId);
+        setupUI();
 
         return binding.getRoot();
+    }
+
+    void setupUI() {
+        binding.buttonBackToResortOptions.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mListener.goBackToResortOptions();
+            }
+        });
+
+        binding.textViewBackToResortOptions.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mListener.goBackToResortOptions();
+            }
+        });
     }
 
     @Override
@@ -171,5 +188,6 @@ public class FilterWaitTimesByParkFragment extends Fragment {
 
     interface FilterWaitTimesByParkFragmentListener {
         void sendSelectedPark(Park park);
+        void goBackToResortOptions();
     }
 }
