@@ -50,55 +50,11 @@ public class NewTripFragment extends Fragment {
     NewTripFragment.NewTripFragmentListener mListener;
     FragmentNewTripBinding binding;
     private FirebaseAuth mAuth;
-    ArrayAdapter<String> arrayAdapter;
-    ArrayList<Resort> resorts = new ArrayList<>();
-    ArrayList<String> resortNames = new ArrayList<>();
     String startDateString;
     String endDateString;
 
     public NewTripFragment() {
         // Required empty public constructor
-    }
-
-    public void getDisneyResortOptions() {
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection("resorts")
-                .addSnapshotListener(new EventListener<QuerySnapshot>() {
-                    @Override
-                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
-                        resorts.clear();
-                        for (QueryDocumentSnapshot document : value) {
-                            Resort resort = new Resort();
-                            resort.setId(document.getId());
-                            resort.setResortName(document.getString("resort_name"));
-                            //GeoPoint geoPoint = document.getGeoPoint("geo_location")
-                            resorts.add(resort);
-                        }
-
-                        Log.d(TAG, "Resorts: " + resorts);
-
-                        getActivity().runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                resortNames.clear();
-                                String spinnerHint = "Select a Resort";
-                                resortNames.add(spinnerHint);
-                                for (int i = 0; i < resorts.size(); i++) {
-                                    Resort resort = resorts.get(i);
-                                    String name = resort.getResortName();
-                                    resortNames.add(name);
-                                }
-                                Log.d(TAG, "Resort Options: " + resortNames);
-                                Spinner resortsSpinner = binding.spinnerResortOptions;
-
-                                arrayAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, resortNames);
-                                arrayAdapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
-                                resortsSpinner.setAdapter(arrayAdapter);
-                            }
-                        });
-                    }
-                });
-
     }
 
     public void setStartDate(String date) {
@@ -120,9 +76,7 @@ public class NewTripFragment extends Fragment {
         String tripName = binding.editTextNewTripName.getText().toString();
         String startDate = startDateString;
         String endDate = endDateString;
-        String resort = binding.spinnerResortOptions.getSelectedItem().toString();
         trip.put("tripName", tripName);
-        trip.put("resort", resort);
         trip.put("startDate", startDate);
         trip.put("endDate", endDate);
 
@@ -155,8 +109,6 @@ public class NewTripFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentNewTripBinding.inflate(inflater, container, false);
-
-        getDisneyResortOptions();
 
         MaterialDatePicker.Builder startDateBuilder = MaterialDatePicker.Builder.datePicker();
         startDateBuilder.setTitleText("START DATE");
@@ -237,7 +189,6 @@ public class NewTripFragment extends Fragment {
                String tripStartDate = startDateString;
                String tripEndDate = endDateString;
                String tripName = binding.editTextNewTripName.getText().toString();
-               String resortName = binding.spinnerResortOptions.getSelectedItem().toString();
 
                if (tripName.isEmpty()) {
                     Toast.makeText(getActivity().getApplicationContext(), "Please enter a trip name", Toast.LENGTH_SHORT).show();
@@ -245,10 +196,7 @@ public class NewTripFragment extends Fragment {
                     Toast.makeText(getActivity().getApplicationContext(), "Please select a start date", Toast.LENGTH_SHORT).show();
                 } else if (tripEndDate == null) {
                    Toast.makeText(getActivity().getApplicationContext(), "Please select an end date", Toast.LENGTH_SHORT).show();
-               } else if (resortName == "Select a Resort" || resortName.isEmpty()) {
-                   Toast.makeText(getActivity().getApplicationContext(), "Please select a resort", Toast.LENGTH_SHORT).show();
-               }
-               else {
+               } else {
                     createTrip();
                     mListener.goToHomePage();
                }

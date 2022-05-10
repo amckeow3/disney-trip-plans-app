@@ -104,28 +104,49 @@ public class WaitTimesFragment extends Fragment {
                         String landsStr = json.getString("lands");
                         JSONArray landsJsonArray = new JSONArray(landsStr);
 
-                        for (int i = 0; i < landsJsonArray.length(); i++) {
-                            JSONObject landJsonObject = landsJsonArray.getJSONObject(i);
-                            //Attraction attraction = new Attraction();
+                        if (landsJsonArray.length() == 0) {
+                            String ridesStr = json.getString("rides");
+                            JSONArray ridesJsonArray = new JSONArray(ridesStr);
 
-                            //attraction.setLand(landJsonObject.getString("name"));
-                            String attractionsStr = landJsonObject.getString("rides");
-                            JSONArray attractionsJsonArray = new JSONArray(attractionsStr);
-
-                            for (int j = 0; j < attractionsJsonArray.length(); j++) {
+                            for (int i = 0; i < ridesJsonArray.length(); i++) {
                                 Attraction attraction = new Attraction();
-                                JSONObject attractionJSONObject = attractionsJsonArray.getJSONObject(j);
 
-                                attraction.setLand(landJsonObject.getString("name"));
-                                attraction.setName(attractionJSONObject.getString("name"));
-                                attraction.setOpen(attractionJSONObject.getBoolean("is_open"));
-                                attraction.setWaitTime(attractionJSONObject.getInt("wait_time"));
+                                JSONObject ridesJSONObject = ridesJsonArray.getJSONObject(i);
+
+                                attraction.setLand(null);
+                                attraction.setName(ridesJSONObject.getString("name"));
+                                attraction.setOpen(ridesJSONObject.getBoolean("is_open"));
+                                attraction.setWaitTime(ridesJSONObject.getInt("wait_time"));
 
                                 Log.d(TAG, "Attraction info ==================>>>>>> " + attraction.toString());
 
                                 attractions.add(attraction);
                             }
+                        } else {
+                            for (int i = 0; i < landsJsonArray.length(); i++) {
+                                JSONObject landJsonObject = landsJsonArray.getJSONObject(i);
+                                //Attraction attraction = new Attraction();
+
+                                //attraction.setLand(landJsonObject.getString("name"));
+                                String attractionsStr = landJsonObject.getString("rides");
+                                JSONArray attractionsJsonArray = new JSONArray(attractionsStr);
+
+                                for (int j = 0; j < attractionsJsonArray.length(); j++) {
+                                    Attraction attraction = new Attraction();
+                                    JSONObject attractionJSONObject = attractionsJsonArray.getJSONObject(j);
+
+                                    attraction.setLand(landJsonObject.getString("name"));
+                                    attraction.setName(attractionJSONObject.getString("name"));
+                                    attraction.setOpen(attractionJSONObject.getBoolean("is_open"));
+                                    attraction.setWaitTime(attractionJSONObject.getInt("wait_time"));
+
+                                    Log.d(TAG, "Attraction info ==================>>>>>> " + attraction.toString());
+
+                                    attractions.add(attraction);
+                                }
+                            }
                         }
+
 
                         getActivity().runOnUiThread(new Runnable() {
                             @Override

@@ -97,7 +97,7 @@ public class HomeFragment extends Fragment {
         binding.cardViewWaitTimes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mListener.selectWaitTimeByResort();
+                mListener.selectWaitTimesByPark();
             }
         });
     }
@@ -122,6 +122,6 @@ public class HomeFragment extends Fragment {
         void createNewTrip();
         void viewMyTrips();
         void showMaps();
-        void selectWaitTimeByResort();
+        void selectWaitTimesByPark();
     }
 }

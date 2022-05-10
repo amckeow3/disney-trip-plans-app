@@ -28,6 +28,6 @@
     <string name="resorts">Resorts</string>
     <string name="back">Back</string>
     <string name="no_trips_yet">No trips yet!</string>
-    <string name="plan_trip_string">You do not have any trips created. Once you do, they will appear here.</string>
+    <string name="plan_trip_string">You have not created any trips yet. Once you do, they will appear here.</string>
     <string name="create_my_first_trip">Create my first trip</string>
 </resources>

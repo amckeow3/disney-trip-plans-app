@@ -11,8 +11,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity implements LoginFragment.LoginFragmentListener, RegistrationFragment.RegistrationFragmentListener, HomeFragment.HomeFragmentListener,
-        AccountFragment.AccountFragmentListener, NewTripFragment.NewTripFragmentListener, MyTripsFragment.MyTripsFragmentListener, MapFragment.MapFragmentListener,
-        FilterWaitTimesByResortFragment.FilterWaitTimesByResortFragmentListener, FilterWaitTimesByParkFragment.FilterWaitTimesByParkFragmentListener, WaitTimesFragment.WaitTimesFragmentListener {
+        AccountFragment.AccountFragmentListener, NewTripFragment.NewTripFragmentListener, MyTripsFragment.MyTripsFragmentListener, MapFragment.MapFragmentListener, FilterWaitTimesByParkFragment.FilterWaitTimesByParkFragmentListener, WaitTimesFragment.WaitTimesFragmentListener {
 
     private FirebaseAuth mAuth;
 
@@ -100,9 +99,9 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.Log
     }
 
     @Override
-    public void selectWaitTimeByResort() {
+    public void selectWaitTimesByPark() {
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.rootView, new FilterWaitTimesByResortFragment(), "wait-times-by-resort")
+                .replace(R.id.rootView, new FilterWaitTimesByParkFragment(), "wait-times-by-resort")
                 .addToBackStack(null)
                 .commit();
     }
@@ -111,14 +110,6 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.Log
     public void cancelNewTrip() {
         getSupportFragmentManager()
                 .popBackStack();
-    }
-
-    @Override
-    public void sendSelectedResort(Resort resort) {
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.rootView, FilterWaitTimesByParkFragment.newInstance(resort), "wait-times-by-park")
-                .addToBackStack(null)
-                .commit();
     }
 
     @Override

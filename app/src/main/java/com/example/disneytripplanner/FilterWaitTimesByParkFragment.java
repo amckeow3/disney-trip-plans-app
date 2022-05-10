@@ -66,7 +66,7 @@ public class FilterWaitTimesByParkFragment extends Fragment {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
         db.collection("resorts")
-                .document(id)
+                .document("htf1iqKlYdTIHkEJVlkb")
                 .collection("parks")
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
