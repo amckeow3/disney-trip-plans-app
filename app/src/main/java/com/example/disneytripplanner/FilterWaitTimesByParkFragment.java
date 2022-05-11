@@ -16,7 +16,6 @@ import android.view.ViewGroup;
 
 import com.example.disneytripplanner.databinding.FragmentFilterWaitTimesByParkBinding;
 import com.example.disneytripplanner.databinding.ParkLineItemBinding;
-import com.example.disneytripplanner.databinding.ResortLineItemBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -30,7 +29,6 @@ public class FilterWaitTimesByParkFragment extends Fragment {
     private static final String TAG = "get wait by park frag";
     FilterWaitTimesByParkFragment.FilterWaitTimesByParkFragmentListener mListener;
     FragmentFilterWaitTimesByParkBinding binding;
-    private static final String ARG_PARAM_RESORT = "paramResort";
     ParksListAdapter parksListAdapter;
     LinearLayoutManager linearLayoutManager;
     RecyclerView recyclerView;
@@ -43,26 +41,14 @@ public class FilterWaitTimesByParkFragment extends Fragment {
         // Required empty public constructor
     }
 
-    public static FilterWaitTimesByParkFragment newInstance(Resort resort) {
-        FilterWaitTimesByParkFragment fragment = new FilterWaitTimesByParkFragment();
-        Bundle args = new Bundle();
-        args.putSerializable(ARG_PARAM_RESORT, resort);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            resortObject = (Resort) getArguments().getSerializable(ARG_PARAM_RESORT);
-            resortId = resortObject.getId();
-        }
         
-        getParkOptions(resortId);
+        getParkOptions();
     }
 
-    void getParkOptions(String id) {
+    void getParkOptions() {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
         db.collection("resorts")
@@ -136,6 +122,18 @@ public class FilterWaitTimesByParkFragment extends Fragment {
                 mPark = park;
                 mBinding.textViewParkName.setText(mPark.parkName);
 
+                String parkName = mPark.getParkName();
+
+                if (parkName.matches("Epcot")) {
+                    mBinding.imageViewParkIcon.setImageResource(R.drawable.epcot_color);
+                } else if (parkName.matches("Animal Kingdom")) {
+                    mBinding.imageViewParkIcon.setImageResource(R.drawable.animal_kingdom_tree_color);
+                } else if (parkName.matches("Disney Hollywood Studios")) {
+                    mBinding.imageViewParkIcon.setImageResource(R.drawable.tot_color);
+                } else {
+                    mBinding.imageViewParkIcon.setImageResource(R.drawable.mk_castle_color);
+                }
+
                 itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -153,21 +151,21 @@ public class FilterWaitTimesByParkFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentFilterWaitTimesByParkBinding.inflate(inflater, container, false);
 
-        getParkOptions(resortId);
+        getParkOptions();
         setupUI();
 
         return binding.getRoot();
     }
 
     void setupUI() {
-        binding.buttonBackToResortOptions.setOnClickListener(new View.OnClickListener() {
+        binding.buttonParkOptionsBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mListener.goBackToResortOptions();
             }
         });
 
-        binding.textViewBackToResortOptions.setOnClickListener(new View.OnClickListener() {
+        binding.textViewParkOptionsBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mListener.goBackToResortOptions();

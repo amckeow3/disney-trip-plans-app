@@ -74,9 +74,11 @@ public class NewTripFragment extends Fragment {
         HashMap<String, Object> trip = new HashMap<>();
 
         String tripName = binding.editTextNewTripName.getText().toString();
+        String description = binding.editTextTripDescription.getText().toString();
         String startDate = startDateString;
         String endDate = endDateString;
         trip.put("tripName", tripName);
+        trip.put("description", description);
         trip.put("startDate", startDate);
         trip.put("endDate", endDate);
 
@@ -121,6 +123,14 @@ public class NewTripFragment extends Fragment {
                     }
                 });
 
+        binding.imageViewCheckInCalendar.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        startDatePicker.show(getChildFragmentManager(), "START_DATE_PICKER");
+                    }
+                });
+
         startDatePicker.addOnPositiveButtonClickListener(
                 new MaterialPickerOnPositiveButtonClickListener() {
                     @SuppressLint("SetTextI18n")
@@ -136,6 +146,14 @@ public class NewTripFragment extends Fragment {
         endDateBuilder.setTitleText("END DATE");
         final MaterialDatePicker endDatePicker = endDateBuilder.build();
         binding.editTextEndDate.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        endDatePicker.show(getChildFragmentManager(), "END_DATE_PICKER");
+                    }
+                });
+
+        binding.imageViewCheckOutCalendar.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -193,9 +211,9 @@ public class NewTripFragment extends Fragment {
                if (tripName.isEmpty()) {
                     Toast.makeText(getActivity().getApplicationContext(), "Please enter a trip name", Toast.LENGTH_SHORT).show();
                 } else if (tripStartDate == null) {
-                    Toast.makeText(getActivity().getApplicationContext(), "Please select a start date", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity().getApplicationContext(), "Check-in date required", Toast.LENGTH_SHORT).show();
                 } else if (tripEndDate == null) {
-                   Toast.makeText(getActivity().getApplicationContext(), "Please select an end date", Toast.LENGTH_SHORT).show();
+                   Toast.makeText(getActivity().getApplicationContext(), "Check-out date required", Toast.LENGTH_SHORT).show();
                } else {
                     createTrip();
                     mListener.goToHomePage();

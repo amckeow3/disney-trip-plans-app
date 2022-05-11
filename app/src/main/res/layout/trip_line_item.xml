@@ -8,6 +8,11 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:cardElevation="4dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,42 +27,24 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="4dp"
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/imageViewResortImage"
-                app:layout_constraintTop_toTopOf="@+id/imageViewResortImage" />
-
-            <androidx.constraintlayout.utils.widget.ImageFilterView
-                android:id="@+id/imageViewResortImage"
-                android:layout_width="123dp"
-                android:layout_height="118dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/wdw_icon" />
-
-            <TextView
-                android:id="@+id/textViewTripLocation"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
+                android:layout_marginEnd="16dp"
                 android:textColor="@color/black"
-                android:textSize="15sp"
-                app:layout_constraintBottom_toBottomOf="@+id/imageViewResortImage"
-                app:layout_constraintEnd_toEndOf="@+id/textViewTripDates"
-                app:layout_constraintStart_toStartOf="@+id/textViewTripName" />
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/textViewTripDates"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:textColor="@color/black"
-                android:textSize="15sp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:textColor="@color/dark_grey"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/textViewTripName"
                 app:layout_constraintStart_toStartOf="@+id/textViewTripName"
                 app:layout_constraintTop_toBottomOf="@+id/textViewTripName" />

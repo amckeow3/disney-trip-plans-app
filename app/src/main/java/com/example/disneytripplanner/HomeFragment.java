@@ -1,5 +1,6 @@
 package com.example.disneytripplanner;
 
+import android.app.ActionBar;
 import android.content.Context;
 import android.os.Bundle;
 
@@ -73,7 +74,7 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        binding.buttonCreateTrip.setOnClickListener(new View.OnClickListener() {
+        binding.buttonMyTrips.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mListener.createNewTrip();

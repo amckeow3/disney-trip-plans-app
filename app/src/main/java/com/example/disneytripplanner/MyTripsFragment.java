@@ -58,7 +58,7 @@ public class MyTripsFragment extends Fragment {
                             Log.d(TAG, "trip data ---->" + document.getData());
                             Trip trip = new Trip();
                             trip.setTripName(document.getString("tripName"));
-                            trip.setResort(document.getString("resort"));
+                            trip.setDescription(document.getString("description"));
                             trip.setStartDate(document.getString("startDate"));
                             trip.setEndDate(document.getString("endDate"));
                             trips.add(trip);
@@ -132,29 +132,10 @@ public class MyTripsFragment extends Fragment {
                 mTrip = trip;
                 mBinding.textViewTripName.setText(mTrip.tripName);
                 mBinding.textViewTripDates.setText(mTrip.startDate + " - " + mTrip.endDate);
-                mBinding.textViewTripLocation.setText(mTrip.resort);
                 mAuth = FirebaseAuth.getInstance();
                 FirebaseUser user = mAuth.getCurrentUser();
                 String userId = user.getUid();
                 Log.d(TAG, "user id: " + userId);
-
-                String resortName = mTrip.getResort();
-
-                if (resortName.matches("Shanghai Disney Resort")) {
-                    mBinding.imageViewResortImage.setImageResource(R.drawable.shanghai_castle);
-                } else if (resortName.matches("Disneyland Paris")){
-                    mBinding.imageViewResortImage.setImageResource(R.drawable.paris_castle);
-                } else if (resortName.matches("Disneyland California")) {
-                    mBinding.imageViewResortImage.setImageResource(R.drawable.disneyland_icon);
-                } else if (resortName.matches("Walt Disney World Resort")) {
-                    mBinding.imageViewResortImage.setImageResource(R.drawable.wdw_icon);
-                } else if (resortName.matches("Hong Kong Disneyland Resort")){
-                    mBinding.imageViewResortImage.setImageResource(R.drawable.hk_disneyland);
-                } else if (resortName.matches("Tokyo Disney Resort")) {
-                    mBinding.imageViewResortImage.setImageResource(R.drawable.tokyo_disney);
-                } else {
-                    mBinding.imageViewResortImage.setImageResource(R.drawable.wdw_icon);
-                }
             }
         }
     }
@@ -168,6 +149,13 @@ public class MyTripsFragment extends Fragment {
 
     public void setupUI() {
         binding.buttonAddTripIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mListener.createNewTrip();
+            }
+        });
+
+        binding.buttonCreateFirstTrip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mListener.createNewTrip();

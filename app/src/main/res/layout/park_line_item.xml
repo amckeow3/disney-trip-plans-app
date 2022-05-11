@@ -7,22 +7,38 @@
 
     <TextView
         android:id="@+id/textViewParkName"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="8dp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toStartOf="@+id/imageFilterView"
+        app:layout_constraintStart_toEndOf="@+id/imageViewParkIcon"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.571" />
 
     <androidx.constraintlayout.utils.widget.ImageFilterView
         android:id="@+id/imageFilterView"
-        android:layout_marginEnd="8dp"
         android:layout_width="28dp"
         android:layout_height="30dp"
         app:layout_constraintBottom_toBottomOf="@+id/textViewParkName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textViewParkName"
         app:srcCompat="@drawable/next_arrow" />
+
+    <androidx.constraintlayout.utils.widget.ImageFilterView
+        android:id="@+id/imageViewParkIcon"
+        android:layout_width="66dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/mk_castle_color" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
