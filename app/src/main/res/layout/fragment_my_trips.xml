@@ -4,17 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MyTripsFragment" >
-
-    <TextView
-        android:id="@+id/textViewBackFromViewTrips"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/back"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/buttonBackFromViewTrips"
-        app:layout_constraintStart_toEndOf="@+id/buttonBackFromViewTrips"
-        app:layout_constraintTop_toTopOf="@+id/buttonBackFromViewTrips" />
+    tools:context=".MyTripsFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewTrips"
@@ -41,13 +31,13 @@
 
     <androidx.constraintlayout.utils.widget.ImageFilterView
         android:id="@+id/buttonBackFromViewTrips"
-        android:layout_width="34dp"
-        android:layout_height="23dp"
+        android:layout_width="39dp"
+        android:layout_height="30dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
         android:src="@drawable/arrow_back"
+        app:layout_constraintBottom_toBottomOf="@+id/buttonAddTripIcon"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/buttonAddTripIcon" />
 
     <TextView
         android:id="@+id/textViewNoTrips"

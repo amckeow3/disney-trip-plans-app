@@ -28,4 +28,6 @@
     <string name="no_trips_yet">No trips yet!</string>
     <string name="plan_trip_string">You have not created any trips yet. Once you do, they will appear here.</string>
     <string name="create_my_first_trip">Create my first trip</string>
+    <string name="my_favorites">My Favorites</string>
+    <string name="park_hrs_and_info">Park Hours &amp; Info</string>
 </resources>

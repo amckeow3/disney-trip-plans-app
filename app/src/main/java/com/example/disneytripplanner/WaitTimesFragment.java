@@ -75,9 +75,6 @@ public class WaitTimesFragment extends Fragment {
             parkQueryId = parkObject.getQueryId();
             queueTimesApiId = parkObject.getQueueTimesApiId();
         }
-
-        getPostsList(queueTimesApiId);
-
     }
 
     void getPostsList(String apiId) {
@@ -123,7 +120,6 @@ public class WaitTimesFragment extends Fragment {
                                 attractions.add(attraction);
                             }
                         }
-
 
                         getActivity().runOnUiThread(new Runnable() {
                             @Override
@@ -197,14 +193,14 @@ public class WaitTimesFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentWaitTimesBinding.inflate(inflater, container, false);
 
-        getPostsList(queueTimesApiId);
-
         setupUI();
 
         return binding.getRoot();
     }
 
     void setupUI() {
+        getPostsList(queueTimesApiId);
+
         binding.buttonBackToParkOptions.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

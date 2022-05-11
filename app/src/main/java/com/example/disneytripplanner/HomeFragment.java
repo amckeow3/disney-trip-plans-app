@@ -50,6 +50,7 @@ public class HomeFragment extends Fragment {
 
     public void setupUI() {
 
+        /*
         binding.imageViewProfileCharacter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -73,13 +74,7 @@ public class HomeFragment extends Fragment {
                 popupMenu.show();
             }
         });
-
-        binding.buttonMyTrips.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mListener.createNewTrip();
-            }
-        });
+        */
 
         binding.cardViewMyTrips.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,10 +83,10 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        binding.buttonMaps.setOnClickListener(new View.OnClickListener() {
+        binding.cardViewParkHours.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mListener.showMaps();
+                mListener.viewParkHours();
             }
         });
 
@@ -99,6 +94,13 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 mListener.selectWaitTimesByPark();
+            }
+        });
+
+        binding.cardViewMyFavorites.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mListener.goToMyFavorites();
             }
         });
     }
@@ -120,9 +122,9 @@ public class HomeFragment extends Fragment {
     interface HomeFragmentListener {
         void showAccountSetting();
         void goToLogin();
-        void createNewTrip();
         void viewMyTrips();
-        void showMaps();
         void selectWaitTimesByPark();
+        void goToMyFavorites();
+        void viewParkHours();
     }
 }

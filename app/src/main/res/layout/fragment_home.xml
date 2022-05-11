@@ -6,175 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".HomeFragment">
 
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/topNavBar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="start|top"
-        android:backgroundTint="@color/blue_400"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <ImageButton
-                android:id="@+id/buttonMenu"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:background="@color/blue_400"
-                android:minWidth="48dp"
-                android:minHeight="48dp"
-                android:src="@drawable/menu"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:tint="@color/white"
-                tools:ignore="SpeakableTextPresentCheck" />
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardView4"
-                android:layout_width="68dp"
-                android:layout_height="68dp"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
-                app:cardCornerRadius="34dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/buttonSearchApp"
-                app:layout_constraintStart_toEndOf="@+id/buttonMenu"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <ImageView
-                    android:id="@+id/imageViewProfileCharacter"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:contentDescription="TODO"
-                    android:background="@color/blue_400"
-                    android:src="@drawable/mickey_circle_border" />
-            </androidx.cardview.widget.CardView>
-
-            <ImageButton
-                android:id="@+id/buttonSearchApp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="24dp"
-                android:background="@color/blue_400"
-                android:minWidth="48dp"
-                android:minHeight="48dp"
-                android:src="@drawable/search"
-                app:layout_constraintBottom_toBottomOf="@+id/buttonMenu"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/buttonMenu"
-                app:tint="@color/white"
-                tools:ignore="SpeakableTextPresentCheck" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </com.google.android.material.navigation.NavigationView>
-
-
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/navigationView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <ImageButton
-                android:id="@+id/buttonHome"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="10dp"
-                android:background="@color/white"
-                android:contentDescription=" "
-                android:minHeight="48dp"
-                android:src="@drawable/house"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/buttonMaps"
-                app:layout_constraintHorizontal_chainStyle="packed"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:tint="@color/blue_400"
-                tools:ignore="SpeakableTextPresentCheck" />
-
-            <ImageButton
-                android:id="@+id/buttonMaps"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:contentDescription=" "
-                android:minHeight="48dp"
-                android:src="@drawable/location"
-                app:layout_constraintBottom_toBottomOf="@id/buttonHome"
-                app:layout_constraintEnd_toStartOf="@+id/buttonMyTrips"
-                app:layout_constraintHorizontal_chainStyle="packed"
-                app:layout_constraintStart_toEndOf="@+id/buttonHome"
-                app:tint="@color/light_grey"
-                tools:ignore="SpeakableTextPresentCheck" />
-
-            <!--
-                <View
-                    android:id="@+id/placeholder"
-                    android:layout_width="70dp"
-                    android:layout_height="0dp"
-                    android:visibility="invisible"
-                    app:layout_constraintBottom_toBottomOf="@+id/buttonHome"
-                    app:layout_constraintEnd_toStartOf="@+id/buttonSearch"
-                    app:layout_constraintHorizontal_chainStyle="packed"
-                    app:layout_constraintStart_toEndOf="@+id/buttonLocation"
-                    app:layout_constraintTop_toTopOf="@+id/buttonHome" />
-                        -->
-            <ImageButton
-                android:id="@+id/buttonMyTrips"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:contentDescription=" "
-                android:minHeight="48dp"
-                android:src="@drawable/trip_list_icon"
-                app:layout_constraintBottom_toBottomOf="@id/buttonHome"
-                app:layout_constraintEnd_toStartOf="@+id/buttonSearch"
-                app:layout_constraintHorizontal_chainStyle="packed"
-                app:layout_constraintStart_toEndOf="@+id/buttonMaps"
-                app:layout_constraintTop_toTopOf="@+id/buttonHome"
-                app:tint="@color/light_grey" />
-
-            <ImageButton
-                android:id="@+id/buttonSearch"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:contentDescription=" "
-                android:minHeight="48dp"
-                android:src="@drawable/search"
-                app:layout_constraintBottom_toBottomOf="@+id/buttonHome"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_chainStyle="packed"
-                app:layout_constraintStart_toEndOf="@+id/buttonMyTrips"
-                app:tint="@color/light_grey"
-                tools:ignore="SpeakableTextPresentCheck" />
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </com.google.android.material.navigation.NavigationView>
 
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/navigationView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/topNavBar">
+        app:layout_constraintTop_toTopOf="parent">
 
         <TableRow
             android:layout_width="match_parent"
@@ -405,7 +243,64 @@
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="-5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginBottom="10dp">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardViewMyFavorites"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="1dp"
+                    android:layout_marginBottom="16dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:id="@+id/textViewMyFavoritesLabel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="16dp"
+                            android:text="@string/my_favorites"
+                            android:textSize="16sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="@+id/imageFilterViewFavoritesIcon"
+                            app:layout_constraintStart_toStartOf="@+id/imageFilterViewFavoritesIcon"
+                            app:layout_constraintTop_toBottomOf="@+id/imageFilterViewFavoritesIcon" />
+
+                        <androidx.constraintlayout.utils.widget.ImageFilterView
+                            android:id="@+id/imageFilterViewFavoritesIcon"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:layout_marginStart="40dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginEnd="40dp"
+                            android:src="@drawable/favorites_icon"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.cardview.widget.CardView>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
