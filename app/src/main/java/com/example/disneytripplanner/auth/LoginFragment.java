@@ -1,4 +1,4 @@
-package com.example.disneytripplanner;
+package com.example.disneytripplanner.auth;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -107,7 +107,7 @@ public class LoginFragment extends Fragment {
         mListener = (LoginFragment.LoginFragmentListener) context;
     }
 
-    interface LoginFragmentListener {
+    public interface LoginFragmentListener {
         void goToHomePage();
         void goToRegistration();
     }

@@ -1,4 +1,4 @@
-package com.example.disneytripplanner;
+package com.example.disneytripplanner.models;
 
 import java.io.Serializable;
 import java.util.ArrayList;

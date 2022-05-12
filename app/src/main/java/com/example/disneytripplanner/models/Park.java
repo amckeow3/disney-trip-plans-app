@@ -1,4 +1,4 @@
-package com.example.disneytripplanner;
+package com.example.disneytripplanner.models;
 
 import com.google.android.gms.maps.model.LatLng;
 import com.google.firebase.firestore.GeoPoint;

@@ -1,4 +1,4 @@
-package com.example.disneytripplanner;
+package com.example.disneytripplanner.models;
 
 public class Dining {
     String dining_name;

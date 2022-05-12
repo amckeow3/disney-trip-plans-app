@@ -16,7 +16,8 @@ import android.view.ViewGroup;
 
 import com.example.disneytripplanner.databinding.AttractionLineItemBinding;
 import com.example.disneytripplanner.databinding.FragmentWaitTimesBinding;
-import com.example.disneytripplanner.databinding.ParkLineItemBinding;
+import com.example.disneytripplanner.models.Attraction;
+import com.example.disneytripplanner.models.Park;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -24,7 +25,6 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -180,9 +180,9 @@ public class WaitTimesFragment extends Fragment {
 
             public void setupUI(Attraction attraction) {
                 mAttraction = attraction;
-                mBinding.textViewAttractionName.setText(mAttraction.name);
-                mBinding.textViewAttractionLand.setText(mAttraction.land);
-                mBinding.textViewWaitTime.setText(String.valueOf(mAttraction.waitTime));
+                mBinding.textViewAttractionName.setText(mAttraction.getName());
+                mBinding.textViewAttractionLand.setText(mAttraction.getLand());
+                mBinding.textViewWaitTime.setText(String.valueOf(mAttraction.getWaitTime()));
             }
         }
     }

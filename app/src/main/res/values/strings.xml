@@ -29,5 +29,11 @@
     <string name="plan_trip_string">You have not created any trips yet. Once you do, they will appear here.</string>
     <string name="create_my_first_trip">Create my first trip</string>
     <string name="my_favorites">My Favorites</string>
-    <string name="park_hrs_and_info">Park Hours &amp; Info</string>
+    <string name="park_hrs_and_info">Park Hours</string>
+    <string name="magic_kingdom">Magic Kingdom</string>
+    <string name="animal_kingdom">Animal Kingdom</string>
+    <string name="epcot">Epcot</string>
+    <string name="hollywood_studios">Disney Hollywood Studios</string>
+    <string name="today">Today</string>
+    <string name="hours">Hours</string>
 </resources>

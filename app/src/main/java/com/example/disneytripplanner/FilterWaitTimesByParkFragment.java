@@ -16,7 +16,8 @@ import android.view.ViewGroup;
 
 import com.example.disneytripplanner.databinding.FragmentFilterWaitTimesByParkBinding;
 import com.example.disneytripplanner.databinding.ParkLineItemBinding;
-import com.google.firebase.auth.FirebaseAuth;
+import com.example.disneytripplanner.models.Park;
+import com.example.disneytripplanner.models.Resort;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
@@ -120,7 +121,7 @@ public class FilterWaitTimesByParkFragment extends Fragment {
 
             public void setupUI(Park park) {
                 mPark = park;
-                mBinding.textViewParkName.setText(mPark.parkName);
+                mBinding.textViewParkName.setText(mPark.getParkName());
 
                 String parkName = mPark.getParkName();
 
@@ -138,7 +139,7 @@ public class FilterWaitTimesByParkFragment extends Fragment {
                     @Override
                     public void onClick(View view) {
                         Park selectedPark = mPark;
-                        Log.d(TAG, "onClick: selected park --- " + selectedPark.parkName);
+                        Log.d(TAG, "onClick: selected park --- " + selectedPark.getParkName());
                         mListener.sendSelectedPark(selectedPark);
                     }
                 });

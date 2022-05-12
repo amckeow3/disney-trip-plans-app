@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 
 import com.example.disneytripplanner.databinding.FragmentMyTripsBinding;
 import com.example.disneytripplanner.databinding.TripLineItemBinding;
+import com.example.disneytripplanner.models.Trip;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.EventListener;
@@ -130,8 +131,8 @@ public class MyTripsFragment extends Fragment {
 
             public void setupUI(Trip trip) {
                 mTrip = trip;
-                mBinding.textViewTripName.setText(mTrip.tripName);
-                mBinding.textViewTripDates.setText(mTrip.startDate + " - " + mTrip.endDate);
+                mBinding.textViewTripName.setText(mTrip.getTripName());
+                mBinding.textViewTripDates.setText(mTrip.getStartDate() + " - " + mTrip.getEndDate());
                 mAuth = FirebaseAuth.getInstance();
                 FirebaseUser user = mAuth.getCurrentUser();
                 String userId = user.getUid();

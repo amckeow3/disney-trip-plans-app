@@ -1,18 +1,20 @@
-package com.example.disneytripplanner;
+package com.example.disneytripplanner.models;
 
 public class ParkHours {
     String date;
     String openingTime;
     String closingTime;
+    String park;
 
     public ParkHours() {
 
     }
 
-    public ParkHours(String date, String openingTime, String closingTime) {
+    public ParkHours(String date, String openingTime, String closingTime, String park) {
         this.date = date;
         this.openingTime = openingTime;
         this.closingTime = closingTime;
+        this.park = park;
     }
 
     public String getDate() {
@@ -39,12 +41,21 @@ public class ParkHours {
         this.closingTime = closingTime;
     }
 
+    public String getPark() {
+        return park;
+    }
+
+    public void setPark(String park) {
+        this.park = park;
+    }
+
     @Override
     public String toString() {
         return "ParkHours{" +
                 "date='" + date + '\'' +
                 ", openingTime='" + openingTime + '\'' +
                 ", closingTime='" + closingTime + '\'' +
+                ", park='" + park + '\'' +
                 '}';
     }
 }
