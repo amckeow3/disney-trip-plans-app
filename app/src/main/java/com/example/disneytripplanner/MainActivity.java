@@ -10,6 +10,7 @@ import android.view.View;
 import com.example.disneytripplanner.auth.LoginFragment;
 import com.example.disneytripplanner.auth.RegistrationFragment;
 import com.example.disneytripplanner.models.Park;
+import com.example.disneytripplanner.models.Trip;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -85,6 +86,13 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.Log
     }
 
     @Override
+    public void viewSelectedTrip(Trip trip) {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.rootView, ViewTripFragment.newInstance(trip), "home-fragment")
+                .commit();
+    }
+
+    @Override
     public void backToLogin() {
         getSupportFragmentManager().popBackStack();
     }
@@ -129,9 +137,9 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.Log
     }
 
     @Override
-    public void selectWaitTimesByPark() {
+    public void viewWaitTimes() {
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.rootView, new FilterWaitTimesByParkFragment(), "wait-times-by-resort")
+                .replace(R.id.rootView, new FilterWaitTimesByParkFragment(), "wait-times-fragment")
                 .addToBackStack(null)
                 .commit();
     }

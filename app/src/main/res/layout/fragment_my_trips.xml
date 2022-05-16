@@ -11,33 +11,11 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="32dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonBackFromViewTrips" />
-
-    <androidx.constraintlayout.utils.widget.ImageFilterView
-        android:id="@+id/buttonAddTripIcon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:src="@drawable/ic_baseline_add_24"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.constraintlayout.utils.widget.ImageFilterView
-        android:id="@+id/buttonBackFromViewTrips"
-        android:layout_width="39dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="16dp"
-        android:src="@drawable/arrow_back"
-        app:layout_constraintBottom_toBottomOf="@+id/buttonAddTripIcon"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/buttonAddTripIcon" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonAddTrip" />
 
     <TextView
         android:id="@+id/textViewNoTrips"
@@ -78,4 +56,18 @@
         app:layout_constraintEnd_toEndOf="@+id/textViewNoTripsSub"
         app:layout_constraintStart_toStartOf="@+id/textViewNoTripsSub"
         app:layout_constraintTop_toBottomOf="@+id/textViewNoTripsSub" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/buttonAddTrip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="@color/blue_400"
+        android:clickable="true"
+        android:src="@drawable/ic_baseline_add_24"
+        android:tint="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -47,7 +47,7 @@ import java.util.HashMap;
 
 public class NewTripFragment extends Fragment {
     private static final String TAG = "new trip fragment";
-    NewTripFragment.NewTripFragmentListener mListener;
+    NewTripFragmentListener mListener;
     FragmentNewTripBinding binding;
     private FirebaseAuth mAuth;
     String startDateString;
@@ -271,7 +271,7 @@ public class NewTripFragment extends Fragment {
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        mListener = (NewTripFragment.NewTripFragmentListener) context;
+        mListener = (NewTripFragmentListener) context;
     }
 
     interface NewTripFragmentListener {

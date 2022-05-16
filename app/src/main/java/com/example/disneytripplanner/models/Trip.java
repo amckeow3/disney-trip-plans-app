@@ -1,6 +1,8 @@
 package com.example.disneytripplanner.models;
 
-public class Trip {
+import java.io.Serializable;
+
+public class Trip implements Serializable {
     String tripName;
     String startDate;
     String endDate;

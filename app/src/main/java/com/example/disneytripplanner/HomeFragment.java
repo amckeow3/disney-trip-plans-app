@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,13 +18,20 @@ import android.view.ViewGroup;
 import android.widget.PopupMenu;
 
 import com.example.disneytripplanner.databinding.FragmentHomeBinding;
+import com.example.disneytripplanner.models.Park;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 public class HomeFragment extends Fragment {
     private static final String TAG = "home fragment";
-    HomeFragment.HomeFragmentListener mListener;
+    HomeFragmentListener mListener;
     FragmentHomeBinding binding;
     private FirebaseAuth mAuth;
 
@@ -93,7 +101,7 @@ public class HomeFragment extends Fragment {
         binding.cardViewWaitTimes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mListener.selectWaitTimesByPark();
+               mListener.viewWaitTimes();
             }
         });
 
@@ -112,10 +120,30 @@ public class HomeFragment extends Fragment {
         mAuth = FirebaseAuth.getInstance();
     }
 
+    void getMkParkObject() {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        db.collection("resorts")
+                .document("htf1iqKlYdTIHkEJVlkb")
+                .collection("parks")
+                .document("UryZXEUlWCi7ax4XIkC0")
+                .addSnapshotListener(new EventListener<DocumentSnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+                        Park park = new Park();
+                        park.setId(value.getId());
+                        park.setParkName(value.getString("park_name"));
+                        park.setQueryId(value.getString("park_id"));
+                        park.setQueueTimesApiId(value.getString("queue_times_api_id"));
+                        //mListener.viewWaitTimes(park);
+                    }
+                });
+    }
+
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        mListener = (HomeFragment.HomeFragmentListener) context;
+        mListener = (HomeFragmentListener) context;
     }
 
 
@@ -123,7 +151,7 @@ public class HomeFragment extends Fragment {
         void showAccountSetting();
         void goToLogin();
         void viewMyTrips();
-        void selectWaitTimesByPark();
+        void viewWaitTimes();
         void goToMyFavorites();
         void viewParkHours();
     }

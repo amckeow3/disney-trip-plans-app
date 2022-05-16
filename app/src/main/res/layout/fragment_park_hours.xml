@@ -7,81 +7,13 @@
     android:layout_height="match_parent"
     tools:context=".ParkHoursFragment">
 
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/topNavBar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="start|top"
-        android:backgroundTint="@color/blue_400"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="1dp"
-                android:backgroundTint="@color/blue_400"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:id="@+id/textView6"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/park_hrs_and_info"
-                        android:textColor="@color/white"
-                        android:textSize="25sp"
-                        android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <ImageButton
-                        android:id="@+id/buttonBackFromParkHours"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginEnd="16dp"
-                        android:layout_marginBottom="8dp"
-                        android:background="@color/blue_400"
-                        android:minWidth="48dp"
-                        android:minHeight="48dp"
-                        android:src="@drawable/arrow_back"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/textView6"
-                        app:layout_constraintHorizontal_bias="0.488"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:tint="@color/white"
-                        tools:ignore="SpeakableTextPresentCheck" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-            </androidx.cardview.widget.CardView>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </com.google.android.material.navigation.NavigationView>
-
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView4"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/blue_400"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/topNavBar">
+        app:layout_constraintStart_toStartOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -93,6 +25,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
+                android:fontFamily="@font/palanquin"
                 android:text="@string/today"
                 android:textColor="@color/white"
                 android:textSize="22sp"
@@ -149,7 +82,7 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardViewDak"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toTopOf="@+id/cardViewStudios"
@@ -166,8 +99,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="24dp"
+                android:fontFamily="@font/palanquin_light"
                 android:textColor="@color/light_grey"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="@+id/textView18"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/textView18" />
@@ -176,11 +110,11 @@
                 android:id="@+id/textView18"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
+                android:fontFamily="@font/poppins_light"
                 android:text="@string/hours"
                 android:textColor="@color/dark_grey"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/textView8"
                 app:layout_constraintTop_toBottomOf="@+id/textView8" />
@@ -190,11 +124,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/poppins_medium"
                 android:text="@string/animal_kingdom"
                 android:textColor="@color/dark_grey"
-                android:textSize="22sp"
-                android:textStyle="bold"
+                android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -219,10 +153,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="16dp"
+                android:fontFamily="@font/poppins_medium"
                 android:text="@string/magic_kingdom"
                 android:textColor="@color/dark_grey"
-                android:textSize="22sp"
-                android:textStyle="bold"
+                android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -230,11 +164,11 @@
                 android:id="@+id/textView16"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
+                android:fontFamily="@font/poppins_light"
                 android:text="@string/hours"
                 android:textColor="@color/dark_grey"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/textView4"
                 app:layout_constraintTop_toBottomOf="@+id/textView4" />
@@ -244,8 +178,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="24dp"
+                android:fontFamily="@font/poppins_light"
                 android:textColor="@color/light_grey"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="@+id/textView16"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/textView16" />
@@ -269,11 +204,12 @@
 
             <TextView
                 android:id="@+id/textViewEpcotParkHours"
-                android:layout_width="0dp"
-                android:layout_height="23dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginEnd="24dp"
+                android:fontFamily="@font/palanquin_light"
                 android:textColor="@color/light_grey"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="@+id/textView17"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/textView17" />
@@ -282,11 +218,11 @@
                 android:id="@+id/textView17"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
+                android:fontFamily="@font/poppins_light"
                 android:text="@string/hours"
                 android:textColor="@color/dark_grey"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/textView7"
                 app:layout_constraintTop_toBottomOf="@+id/textView7" />
@@ -297,10 +233,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="16dp"
+                android:fontFamily="@font/poppins_medium"
                 android:text="@string/epcot"
                 android:textColor="@color/dark_grey"
-                android:textSize="22sp"
-                android:textStyle="bold"
+                android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -308,7 +244,7 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardViewStudios"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -324,8 +260,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="24dp"
+                android:fontFamily="@font/palanquin_light"
                 android:textColor="@color/light_grey"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="@+id/textView19"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/textView19" />
@@ -334,11 +271,11 @@
                 android:id="@+id/textView19"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
+                android:fontFamily="@font/poppins_light"
                 android:text="@string/hours"
                 android:textColor="@color/dark_grey"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/textView9"
                 app:layout_constraintTop_toBottomOf="@+id/textView9" />
@@ -349,10 +286,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="16dp"
+                android:fontFamily="@font/poppins_medium"
                 android:text="@string/hollywood_studios"
                 android:textColor="@color/dark_grey"
-                android:textSize="22sp"
-                android:textStyle="bold"
+                android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>

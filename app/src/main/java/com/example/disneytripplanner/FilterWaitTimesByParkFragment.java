@@ -28,15 +28,12 @@ import java.util.ArrayList;
 
 public class FilterWaitTimesByParkFragment extends Fragment {
     private static final String TAG = "get wait by park frag";
-    FilterWaitTimesByParkFragment.FilterWaitTimesByParkFragmentListener mListener;
+    FilterWaitTimesByParkFragmentListener mListener;
     FragmentFilterWaitTimesByParkBinding binding;
     ParksListAdapter parksListAdapter;
     LinearLayoutManager linearLayoutManager;
     RecyclerView recyclerView;
     ArrayList<Park> parks = new ArrayList<>();
-
-    Resort resortObject;
-    String resortId;
 
     public FilterWaitTimesByParkFragment() {
         // Required empty public constructor
@@ -125,6 +122,7 @@ public class FilterWaitTimesByParkFragment extends Fragment {
 
                 String parkName = mPark.getParkName();
 
+                /*
                 if (parkName.matches("Epcot")) {
                     mBinding.imageViewParkIcon.setImageResource(R.drawable.epcot_color);
                 } else if (parkName.matches("Animal Kingdom")) {
@@ -134,6 +132,7 @@ public class FilterWaitTimesByParkFragment extends Fragment {
                 } else {
                     mBinding.imageViewParkIcon.setImageResource(R.drawable.mk_castle_color);
                 }
+                 */
 
                 itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -153,25 +152,8 @@ public class FilterWaitTimesByParkFragment extends Fragment {
         binding = FragmentFilterWaitTimesByParkBinding.inflate(inflater, container, false);
 
         getParkOptions();
-        setupUI();
 
         return binding.getRoot();
-    }
-
-    void setupUI() {
-        binding.buttonParkOptionsBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mListener.goBackToResortOptions();
-            }
-        });
-
-        binding.textViewParkOptionsBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mListener.goBackToResortOptions();
-            }
-        });
     }
 
     @Override
@@ -182,7 +164,7 @@ public class FilterWaitTimesByParkFragment extends Fragment {
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        mListener = (FilterWaitTimesByParkFragment.FilterWaitTimesByParkFragmentListener) context;
+        mListener = (FilterWaitTimesByParkFragmentListener) context;
     }
 
     interface FilterWaitTimesByParkFragmentListener {

@@ -13,17 +13,25 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 
 import com.example.disneytripplanner.databinding.AttractionLineItemBinding;
 import com.example.disneytripplanner.databinding.FragmentWaitTimesBinding;
 import com.example.disneytripplanner.models.Attraction;
 import com.example.disneytripplanner.models.Park;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 import okhttp3.Call;
@@ -46,6 +54,9 @@ public class WaitTimesFragment extends Fragment {
     String parkName;
     String parkQueryId;
     String queueTimesApiId;
+    Park selectedPark;
+
+   String[] parkOptions = {"Magic Kingdom", "Epcot", "Animal Kingdom", "Disney Hollywood Studios"};
 
     ArrayList<Attraction> attractions = new ArrayList<>();
     ArrayList<Attraction> allAttractions = new ArrayList<>();
@@ -77,7 +88,37 @@ public class WaitTimesFragment extends Fragment {
         }
     }
 
-    void getPostsList(String apiId) {
+    void getParkInfo(String parkName) {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        db.collection("resorts")
+                .document("htf1iqKlYdTIHkEJVlkb")
+                .collection("parks")
+                .whereEqualTo("park_name", parkName)
+                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                        Log.d(TAG, "Park Info(): " + value.getMetadata());
+                        for (QueryDocumentSnapshot document: value) {
+                            Log.d(TAG, "Document: " + document.toString());
+                            Park park = new Park();
+                            park.setId(document.getId());
+                            park.setParkName(document.getString("park_name"));
+                            park.setQueryId(document.getString("park_id"));
+                            park.setQueueTimesApiId(document.getString("queue_times_api_id"));
+                            Log.d(TAG, "apiId: " + park.getQueueTimesApiId());
+                            setSelectedPark(park);
+                        }
+                    }
+                });
+    }
+
+    void setSelectedPark(Park mPark) {
+        selectedPark = mPark;
+        getAttractionsList(selectedPark.getQueueTimesApiId());
+    }
+
+    void getAttractionsList(String apiId) {
         Request request = new Request.Builder()
                 .url("https://queue-times.com/en-US/parks/" + apiId + "/queue_times.json")
                 .build();
@@ -100,7 +141,7 @@ public class WaitTimesFragment extends Fragment {
                         JSONObject json = new JSONObject(body);
                         String landsStr = json.getString("lands");
                         JSONArray landsJsonArray = new JSONArray(landsStr);
-                            
+
                         for (int i = 0; i < landsJsonArray.length(); i++) {
                             JSONObject landJsonObject = landsJsonArray.getJSONObject(i);
                             String attractionsStr = landJsonObject.getString("rides");
@@ -192,26 +233,27 @@ public class WaitTimesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentWaitTimesBinding.inflate(inflater, container, false);
-
         setupUI();
-
         return binding.getRoot();
     }
 
     void setupUI() {
-        getPostsList(queueTimesApiId);
-
-        binding.buttonBackToParkOptions.setOnClickListener(new View.OnClickListener() {
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, parkOptions);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        binding.spinnerParkOptions.setAdapter(adapter);
+        binding.spinnerParkOptions.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onClick(View view) {
-                mListener.goBackToParkOptions();
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Log.v("item", (String) parent.getItemAtPosition(position));
+                String parkName = parent.getItemAtPosition(position).toString();
+                getParkInfo(parkName);
+                //mListener.sendSelectedPark(selectedPark);
+                //mListener.sendSelectedPark(parkName);
             }
-        });
 
-        binding.textViewBackToParkOptions.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                mListener.goBackToParkOptions();
+            public void onNothingSelected(AdapterView<?> parent) {
+                // TODO Auto-generated method stub
             }
         });
     }
@@ -219,6 +261,7 @@ public class WaitTimesFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        setupUI();
     }
 
     @Override
@@ -229,5 +272,6 @@ public class WaitTimesFragment extends Fragment {
 
     interface WaitTimesFragmentListener {
         void goBackToParkOptions();
+        void sendSelectedPark(Park parkName);
     }
 }

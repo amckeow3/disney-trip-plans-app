@@ -33,7 +33,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 public class AccountFragment extends Fragment {
     private static final String TAG = "account fragment";
-    AccountFragment.AccountFragmentListener mListener;
+    AccountFragmentListener mListener;
     FragmentAccountBinding binding;
     private FirebaseAuth mAuth;
 
@@ -161,7 +161,7 @@ public class AccountFragment extends Fragment {
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        mListener = (AccountFragment.AccountFragmentListener) context;
+        mListener = (AccountFragmentListener) context;
     }
 
     interface AccountFragmentListener {

@@ -29,7 +29,7 @@ import java.util.ArrayList;
 
 public class MyTripsFragment extends Fragment {
     private static final String TAG = "my trips fragment";
-    MyTripsFragment.MyTripsFragmentListener mListener;
+    MyTripsFragmentListener mListener;
     FragmentMyTripsBinding binding;
     private FirebaseAuth mAuth;
     ArrayList<Trip> trips = new ArrayList<>();
@@ -137,6 +137,14 @@ public class MyTripsFragment extends Fragment {
                 FirebaseUser user = mAuth.getCurrentUser();
                 String userId = user.getUid();
                 Log.d(TAG, "user id: " + userId);
+
+                itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Trip selectedTrip = mTrip;
+                        mListener.viewSelectedTrip(selectedTrip);
+                    }
+                });
             }
         }
     }
@@ -149,7 +157,7 @@ public class MyTripsFragment extends Fragment {
     }
 
     public void setupUI() {
-        binding.buttonAddTripIcon.setOnClickListener(new View.OnClickListener() {
+        binding.buttonAddTrip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mListener.createNewTrip();
@@ -160,13 +168,6 @@ public class MyTripsFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 mListener.createNewTrip();
-            }
-        });
-
-        binding.buttonBackFromViewTrips.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mListener.goToHomePage();
             }
         });
     }
@@ -190,11 +191,12 @@ public class MyTripsFragment extends Fragment {
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        mListener = (MyTripsFragment.MyTripsFragmentListener) context;
+        mListener = (MyTripsFragmentListener) context;
     }
 
     interface MyTripsFragmentListener {
         void createNewTrip();
         void goToHomePage();
+        void viewSelectedTrip(Trip selectedTrip);
     }
 }

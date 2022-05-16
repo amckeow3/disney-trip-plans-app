@@ -19,7 +19,7 @@ import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
 public class FavoritesFragment extends Fragment {
-    FavoritesFragment.FavoritesFragmentListener mListener;
+    FavoritesFragmentListener mListener;
     FragmentFavoritesBinding binding;
 
     private ViewPager2 viewPager;
@@ -84,7 +84,7 @@ public class FavoritesFragment extends Fragment {
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        mListener = (FavoritesFragment.FavoritesFragmentListener) context;
+        mListener = (FavoritesFragmentListener) context;
     }
 
     interface FavoritesFragmentListener {

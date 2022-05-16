@@ -39,7 +39,7 @@ import okhttp3.ResponseBody;
 
 public class ParkHoursFragment extends Fragment {
     private static final String TAG = "park hours fragment";
-    ParkHoursFragment.ParkHoursFragmentListener mListener;
+    ParkHoursFragmentListener mListener;
     FragmentParkHoursBinding binding;
     private final OkHttpClient client = new OkHttpClient();
     ArrayList<ParkHours> epcotHours = new ArrayList<>();
@@ -270,13 +270,6 @@ public class ParkHoursFragment extends Fragment {
         setTodaysDate(todaysDateformatted);
 
         getHoursForAllParks();
-
-        binding.buttonBackFromParkHours.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mListener.goToHomePage();
-            }
-        });
     }
 
     void setTodaysDate(String date) {
@@ -496,7 +489,7 @@ public class ParkHoursFragment extends Fragment {
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        mListener = (ParkHoursFragment.ParkHoursFragmentListener) context;
+        mListener = (ParkHoursFragmentListener) context;
     }
 
     interface ParkHoursFragmentListener {
