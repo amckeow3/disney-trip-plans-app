@@ -101,7 +101,8 @@ public class HomeFragment extends Fragment {
         binding.cardViewWaitTimes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               mListener.viewWaitTimes();
+               //mListener.viewWaitTimes();
+                getMkParkObject();
             }
         });
 
@@ -135,7 +136,7 @@ public class HomeFragment extends Fragment {
                         park.setParkName(value.getString("park_name"));
                         park.setQueryId(value.getString("park_id"));
                         park.setQueueTimesApiId(value.getString("queue_times_api_id"));
-                        //mListener.viewWaitTimes(park);
+                        mListener.viewWaitTimes(park);
                     }
                 });
     }
@@ -151,8 +152,8 @@ public class HomeFragment extends Fragment {
         void showAccountSetting();
         void goToLogin();
         void viewMyTrips();
-        void viewWaitTimes();
         void goToMyFavorites();
         void viewParkHours();
+        void viewWaitTimes(Park park);
     }
 }

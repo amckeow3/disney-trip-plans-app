@@ -16,8 +16,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity implements LoginFragment.LoginFragmentListener, RegistrationFragment.RegistrationFragmentListener, HomeFragment.HomeFragmentListener,
-        AccountFragment.AccountFragmentListener, NewTripFragment.NewTripFragmentListener, MyTripsFragment.MyTripsFragmentListener, MapFragment.MapFragmentListener, FilterWaitTimesByParkFragment.FilterWaitTimesByParkFragmentListener,
-        WaitTimesFragment.WaitTimesFragmentListener, FavoritesFragment.FavoritesFragmentListener, ParkHoursFragment.ParkHoursFragmentListener {
+        AccountFragment.AccountFragmentListener, NewTripFragment.NewTripFragmentListener, MyTripsFragment.MyTripsFragmentListener, MapFragment.MapFragmentListener,
+        WaitTimesFragment.WaitTimesFragmentListener, FavoritesFragment.FavoritesFragmentListener, ParkHoursFragment.ParkHoursFragmentListener, ViewTripFragment.ViewTripFragmentListener {
 
     private FirebaseAuth mAuth;
     public static ViewPager2 viewPager;
@@ -137,14 +137,6 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.Log
     }
 
     @Override
-    public void viewWaitTimes() {
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.rootView, new FilterWaitTimesByParkFragment(), "wait-times-fragment")
-                .addToBackStack(null)
-                .commit();
-    }
-
-    @Override
     public void goToMyFavorites() {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.rootView, new FavoritesFragment(), "favorites-fragment")
@@ -167,16 +159,11 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.Log
     }
 
     @Override
-    public void sendSelectedPark(Park park) {
+    public void viewWaitTimes(Park park) {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.rootView, WaitTimesFragment.newInstance(park), "wait-times-fragment")
                 .addToBackStack(null)
                 .commit();
-    }
-
-    @Override
-    public void goBackToResortOptions() {
-        getSupportFragmentManager().popBackStack();
     }
 
     @Override

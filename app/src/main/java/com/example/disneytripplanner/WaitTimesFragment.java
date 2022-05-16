@@ -272,6 +272,6 @@ public class WaitTimesFragment extends Fragment {
 
     interface WaitTimesFragmentListener {
         void goBackToParkOptions();
-        void sendSelectedPark(Park parkName);
+        //void sendSelectedPark(Park parkName);
     }
 }
