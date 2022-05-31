@@ -33,6 +33,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -55,8 +56,9 @@ public class WaitTimesFragment extends Fragment {
     String parkQueryId;
     String queueTimesApiId;
     Park selectedPark;
+    String[] parkNames;
 
-   String[] parkOptions = {"Magic Kingdom", "Epcot", "Animal Kingdom", "Disney Hollywood Studios"};
+    String[] parkOptions = {"Magic Kingdom", "Epcot", "Animal Kingdom", "Disney Hollywood Studios"};
 
     ArrayList<Attraction> attractions = new ArrayList<>();
     ArrayList<Attraction> allAttractions = new ArrayList<>();
@@ -237,6 +239,7 @@ public class WaitTimesFragment extends Fragment {
         return binding.getRoot();
     }
 
+
     void setupUI() {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, parkOptions);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -271,7 +274,6 @@ public class WaitTimesFragment extends Fragment {
     }
 
     interface WaitTimesFragmentListener {
-        void goBackToParkOptions();
         //void sendSelectedPark(Park parkName);
     }
 }

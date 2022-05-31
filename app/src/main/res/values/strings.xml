@@ -36,4 +36,10 @@
     <string name="hollywood_studios">Disney Hollywood Studios</string>
     <string name="today">Today</string>
     <string name="hours">Hours</string>
+    <string-array name="parks">
+        <item>Magic Kingdom</item>
+        <item>Epcot</item>
+        <item>Animal Kingdom</item>
+        <item>Disney Hollywood Studios</item>
+    </string-array>
 </resources>

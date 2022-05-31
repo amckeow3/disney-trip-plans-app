@@ -165,9 +165,4 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.Log
                 .addToBackStack(null)
                 .commit();
     }
-
-    @Override
-    public void goBackToParkOptions() {
-        getSupportFragmentManager().popBackStack();
-    }
 }
