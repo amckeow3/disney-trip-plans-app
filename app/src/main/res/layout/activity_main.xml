@@ -4,61 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
     tools:context=".MainActivity">
 
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/topNavBar"
-        app:labelVisibilityMode="labeled"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="start|top"
-        android:backgroundTint="@color/white"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/cardView4"
-                android:layout_width="63dp"
-                android:layout_height="61dp"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="32dp"
-                android:layout_marginBottom="16dp"
-                app:cardCornerRadius="34dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <ImageView
-                    android:id="@+id/imageViewProfileCharacter"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@color/purple_primary"
-                    android:contentDescription="TODO"
-                    android:src="@drawable/pascal" />
-            </androidx.cardview.widget.CardView>
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </com.google.android.material.navigation.NavigationView>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/rootView"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/navigationView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/topNavBar"
-        app:layout_constraintVertical_bias="0.0">
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        app:layout_constraintTop_toTopOf="parent"></androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navigationView"

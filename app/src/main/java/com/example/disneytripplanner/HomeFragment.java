@@ -19,6 +19,7 @@ import androidx.fragment.app.Fragment;
 import com.example.disneytripplanner.databinding.FragmentHomeBinding;
 import com.example.disneytripplanner.models.Park;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -77,6 +78,8 @@ public class HomeFragment extends Fragment {
         });
          */
 
+        getUserFirstName();
+
         binding.cardViewMyTrips.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -123,6 +126,22 @@ public class HomeFragment extends Fragment {
                         park.setQueryId(value.getString("park_id"));
                         park.setQueueTimesApiId(value.getString("queue_times_api_id"));
                         mListener.viewWaitTimes(park);
+                    }
+                });
+    }
+
+    private void getUserFirstName() {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        FirebaseUser user = mAuth.getCurrentUser();
+        String userUid = user.getUid();
+
+        db.collection("users")
+                .document(userUid)
+                .addSnapshotListener(new EventListener<DocumentSnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+                        String firstName = value.getString("firstName");
+                        binding.textViewHelloName.setText(firstName);
                     }
                 });
     }

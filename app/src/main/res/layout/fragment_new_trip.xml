@@ -4,103 +4,160 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/dark_purple_gradient"
     tools:context=".NewTripFragment">
 
-    <androidx.constraintlayout.utils.widget.ImageFilterView
-        android:id="@+id/imageViewCheckOutCalendar"
-        android:layout_width="38dp"
-        android:layout_height="42dp"
-        android:src="@drawable/calendar"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextEndDate"
-        app:layout_constraintEnd_toEndOf="@+id/imageViewCheckInCalendar"
-        app:layout_constraintTop_toTopOf="@+id/editTextEndDate" />
-
-    <TextView
-        android:id="@+id/textViewCancelNewTrip"
-        android:layout_width="wrap_content"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView4"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        android:text="@string/cancel"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textViewSaveNewTrip"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="16dp"
-        android:text="@string/save"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/editTextNewTripName"
-        android:layout_width="347dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="45dp"
-        android:layout_marginEnd="30dp"
-        android:hint="@string/trip_name"
-        android:importantForAutofill="no"
-        android:inputType="text"
-        android:minHeight="48dp"
-        android:textColor="@color/black"
-        android:textSize="24sp"
+        android:backgroundTint="#D500F9"
+        app:cardBackgroundColor="@android:color/transparent"
+        app:cardElevation=".5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewCancelNewTrip" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <androidx.constraintlayout.utils.widget.ImageFilterView
-        android:id="@+id/imageViewCheckInCalendar"
-        android:layout_width="38dp"
-        android:layout_height="42dp"
-        android:src="@drawable/calendar"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextStartDate"
-        app:layout_constraintEnd_toEndOf="@+id/editTextNewTripName"
-        app:layout_constraintTop_toTopOf="@+id/editTextStartDate" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="@string/create_trip_txt"
+                android:textColor="@color/white"
+                android:textSize="28sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <EditText
-        android:id="@+id/editTextStartDate"
-        android:layout_width="0dp"
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="8dp"
-        android:hint="@string/check_in_date"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toStartOf="@+id/imageViewCheckInCalendar"
-        app:layout_constraintStart_toStartOf="@+id/editTextNewTripName"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNewTripName" />
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView4">
 
-    <EditText
-        android:id="@+id/editTextEndDate"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="8dp"
-        android:hint="@string/check_out_date"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toStartOf="@+id/imageViewCheckOutCalendar"
-        app:layout_constraintStart_toStartOf="@+id/editTextStartDate"
-        app:layout_constraintTop_toBottomOf="@+id/editTextStartDate" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/editTextTripDescription"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:ems="10"
-        android:gravity="start|top"
-        android:hint="@string/description"
-        android:inputType="textMultiLine"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="@+id/editTextNewTripName"
-        app:layout_constraintStart_toStartOf="@+id/editTextEndDate"
-        app:layout_constraintTop_toBottomOf="@+id/editTextEndDate" />
+            <androidx.constraintlayout.utils.widget.ImageFilterView
+                android:id="@+id/imageViewCheckOutCalendar"
+                android:layout_width="38dp"
+                android:layout_height="42dp"
+                android:src="@drawable/calendar"
+                app:layout_constraintBottom_toBottomOf="@+id/editTextEndDate"
+                app:layout_constraintEnd_toEndOf="@+id/imageViewCheckInCalendar"
+                app:layout_constraintTop_toTopOf="@+id/editTextEndDate" />
 
+            <TextView
+                android:id="@+id/textViewCancelNewTrip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="32dp"
+                android:fontFamily="@font/poppins"
+                android:text="@string/cancel"
+                android:textColor="@color/black"
+                android:textSize="22sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/editTextTripDescription"
+                app:layout_constraintTop_toBottomOf="@+id/editTextTripDescription" />
+
+            <TextView
+                android:id="@+id/textViewSaveNewTrip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="32dp"
+                android:fontFamily="@font/poppins"
+                android:text="@string/save"
+                android:textColor="@color/black"
+                android:textSize="22sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/editTextTripDescription"
+                app:layout_constraintTop_toBottomOf="@+id/editTextTripDescription" />
+
+            <EditText
+                android:id="@+id/editTextNewTripName"
+                android:layout_width="347dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="30dp"
+                android:fontFamily="@font/poppins"
+                android:hint="@string/trip_name"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:minHeight="48dp"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.utils.widget.ImageFilterView
+                android:id="@+id/imageViewCheckInCalendar"
+                android:layout_width="38dp"
+                android:layout_height="42dp"
+                android:src="@drawable/calendar"
+                app:layout_constraintBottom_toBottomOf="@+id/editTextStartDate"
+                app:layout_constraintEnd_toEndOf="@+id/editTextNewTripName"
+                app:layout_constraintTop_toTopOf="@+id/editTextStartDate" />
+
+            <EditText
+                android:id="@+id/editTextStartDate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="8dp"
+                android:fontFamily="@font/poppins"
+                android:hint="@string/check_in_date"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toStartOf="@+id/imageViewCheckInCalendar"
+                app:layout_constraintStart_toStartOf="@+id/editTextNewTripName"
+                app:layout_constraintTop_toBottomOf="@+id/editTextNewTripName" />
+
+            <EditText
+                android:id="@+id/editTextEndDate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="8dp"
+                android:fontFamily="@font/poppins"
+                android:hint="@string/check_out_date"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toStartOf="@+id/imageViewCheckOutCalendar"
+                app:layout_constraintStart_toStartOf="@+id/editTextStartDate"
+                app:layout_constraintTop_toBottomOf="@+id/editTextStartDate" />
+
+            <EditText
+                android:id="@+id/editTextTripDescription"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:ems="10"
+                android:fontFamily="@font/poppins"
+                android:gravity="start|top"
+                android:hint="@string/description"
+                android:inputType="textMultiLine"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="@+id/editTextNewTripName"
+                app:layout_constraintStart_toStartOf="@+id/editTextEndDate"
+                app:layout_constraintTop_toBottomOf="@+id/editTextEndDate" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

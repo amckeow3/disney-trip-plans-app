@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/dark_purple_gradient"
     tools:context=".MyTripsFragment">
 
     <androidx.recyclerview.widget.RecyclerView
@@ -21,21 +22,24 @@
         android:id="@+id/textViewNoTrips"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="60dp"
+        android:fontFamily="@font/poppins_bold"
         android:text="@string/no_trips_yet"
+        android:textColor="@color/white"
         android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonAddTrip" />
 
     <TextView
         android:id="@+id/textViewNoTripsSub"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="4dp"
         android:layout_marginEnd="32dp"
+        android:fontFamily="@font/palanquin"
         android:text="@string/plan_trip_string"
+        android:textColor="@color/white"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -46,12 +50,13 @@
         android:id="@+id/buttonCreateFirstTrip"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="16dp"
-        android:backgroundTint="@color/blue_400"
+        android:layout_marginTop="32dp"
+        android:backgroundTint="@color/white"
+        android:fontFamily="@font/poppins_medium"
+        android:outlineAmbientShadowColor="@color/white"
         android:text="@string/create_my_first_trip"
-        android:textColor="@color/white"
+        android:textAllCaps="false"
+        android:textColor="@color/purple_primary"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/textViewNoTripsSub"
         app:layout_constraintStart_toStartOf="@+id/textViewNoTripsSub"
@@ -61,13 +66,14 @@
         android:id="@+id/buttonAddTrip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:backgroundTint="@color/blue_400"
+        android:backgroundTint="@color/white"
         android:clickable="true"
         android:src="@drawable/ic_baseline_add_24"
-        android:tint="@color/white"
+        android:tint="@color/purple_primary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="SpeakableTextPresentCheck" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

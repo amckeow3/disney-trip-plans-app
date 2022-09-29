@@ -6,6 +6,8 @@
     <string name="pass_txt">Password</string>
     <string name="login">Login</string>
     <string name="create_new_acct">Create Account</string>
+    <string name="fname_txt">First Name</string>
+    <string name="lname_txt">Last Name</string>
     <string name="name_txt">Name</string>
     <string name="register">Register</string>
     <string name="cancel">Cancel</string>
@@ -42,4 +44,6 @@
         <item>Animal Kingdom</item>
         <item>Disney Hollywood Studios</item>
     </string-array>
+    <string name="hello_txt">Hello,</string>
+    <string name="create_trip_txt">Create Trip</string>
 </resources>

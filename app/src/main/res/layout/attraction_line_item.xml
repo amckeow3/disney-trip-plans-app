@@ -28,7 +28,7 @@
                 android:layout_marginEnd="24dp"
                 android:fontFamily="@font/poppins_semibold"
                 android:textColor="@color/dark_grey"
-                android:textSize="18sp"
+                android:textSize="20sp"
                 app:layout_constraintEnd_toStartOf="@+id/cardView3"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -40,7 +40,7 @@
                 android:layout_marginBottom="8dp"
                 android:fontFamily="@font/poppins_light"
                 android:textColor="@color/dark_grey"
-                android:textSize="16sp"
+                android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/textViewAttractionName"
                 app:layout_constraintStart_toStartOf="@+id/textViewAttractionName"

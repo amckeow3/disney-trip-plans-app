@@ -51,12 +51,15 @@ public class RegistrationFragment extends Fragment {
         binding.buttonRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String name = binding.editTextRegistrationName.getText().toString();
+                String fName = binding.editTextRegistrationFirstName.getText().toString();
+                String lName = binding.editTextRegistrationLastName.getText().toString();
                 String email = binding.editTextRegistrationEmail.getText().toString();
                 String password = binding.editTextRegistrationPassword.getText().toString();
 
-                if (name.isEmpty()){
-                    Toast.makeText(getActivity().getApplicationContext(), "Name is required", Toast.LENGTH_SHORT).show();
+                if (fName.isEmpty()){
+                    Toast.makeText(getActivity().getApplicationContext(), "First Name is required", Toast.LENGTH_SHORT).show();
+                } else if (lName.isEmpty()) {
+                    Toast.makeText(getActivity().getApplicationContext(), "Last Name is required", Toast.LENGTH_SHORT).show();
                 } else if (email.isEmpty()) {
                     Toast.makeText(getActivity().getApplicationContext(), "Email is required", Toast.LENGTH_SHORT).show();
                 } else if (password.isEmpty()) {
@@ -75,7 +78,7 @@ public class RegistrationFragment extends Fragment {
                                         Log.d(TAG, "onComplete: User " + user);
 
                                         UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
-                                                .setDisplayName(name)
+                                                .setDisplayName(fName + " " + lName)
                                                 .build();
 
                                         user.updateProfile(profileUpdates)
@@ -125,14 +128,16 @@ public class RegistrationFragment extends Fragment {
         mAuth = FirebaseAuth.getInstance();
 
         FirebaseUser user = mAuth.getCurrentUser();
-        String name = user.getDisplayName();
+        String fName = binding.editTextRegistrationFirstName.getText().toString();
+        String lName = binding.editTextRegistrationLastName.getText().toString();
         String id = user.getUid();
         String email = user.getEmail();
 
         HashMap<String, Object> newUser = new HashMap<>();
 
         newUser.put("id", id);
-        newUser.put("name", name);
+        newUser.put("firstName", fName);
+        newUser.put("lastName", lName);
         newUser.put("email", email);
 
         db.collection("users")

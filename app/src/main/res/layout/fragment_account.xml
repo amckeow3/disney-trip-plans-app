@@ -58,15 +58,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewChangeCharacter" />
 
-    <TextView
-        android:id="@+id/textViewAccountName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:textSize="22sp"
-        app:layout_constraintStart_toStartOf="@+id/textView3"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
-
     <androidx.constraintlayout.utils.widget.ImageFilterView
         android:id="@+id/imageViewEditAccountName"
         android:layout_width="19dp"
@@ -76,6 +67,15 @@
         android:tint="@color/blue_400"
         app:layout_constraintStart_toEndOf="@+id/textViewAccountName"
         app:layout_constraintTop_toTopOf="@+id/textViewAccountName" />
+
+    <TextView
+        android:id="@+id/textViewAccountName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        app:layout_constraintStart_toStartOf="@+id/textView3"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <TextView
         android:id="@+id/textView5"
