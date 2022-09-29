@@ -373,7 +373,7 @@ public class ParkHoursFragment extends Fragment {
                    epcotClosingTime = dateTimeFormatter.parse(epcotHours.getClosingTime());
                    String formattedOpening = formatTime.format(epcotOpeningTime);
                    String formattedClosing = formatTime.format(epcotClosingTime);
-                   Log.d(TAG, "Epcot: " + formattedOpening + " to " + formattedClosing);
+                   //Log.d(TAG, "Epcot: " + formattedOpening + " to " + formattedClosing);
                    if (getActivity() != null) {
                        getActivity().runOnUiThread(new Runnable() {
                            @Override
@@ -404,7 +404,7 @@ public class ParkHoursFragment extends Fragment {
                     dakClosingTime = dateTimeFormatter.parse(dakHours.getClosingTime());
                     String formattedOpening = formatTime.format(dakOpeningTime);
                     String formattedClosing = formatTime.format(dakClosingTime);
-                    Log.d(TAG, "DAK: " + formattedOpening + " to " + formattedClosing);
+                    //Log.d(TAG, "DAK: " + formattedOpening + " to " + formattedClosing);
                     if (getActivity() != null) {
                         getActivity().runOnUiThread(new Runnable() {
                             @Override
@@ -434,7 +434,7 @@ public class ParkHoursFragment extends Fragment {
                     mkClosingTime = dateTimeFormatter.parse(mkHours.getClosingTime());
                     String formattedOpening = formatTime.format(mkOpeningTime);
                     String formattedClosing = formatTime.format(mkClosingTime);
-                    Log.d(TAG, "MK: " +  formattedOpening + " to " + formattedClosing);
+                    //Log.d(TAG, "MK: " +  formattedOpening + " to " + formattedClosing);
                     if (getActivity() != null) {
                         getActivity().runOnUiThread(new Runnable() {
                             @Override
@@ -464,7 +464,7 @@ public class ParkHoursFragment extends Fragment {
                     hsClosingTime = dateTimeFormatter.parse(hsHours.getClosingTime());
                     String formattedOpening = formatTime.format(hsOpeningTime);
                     String formattedClosing = formatTime.format(hsClosingTime);
-                    Log.d(TAG, "Hollywood: " + formattedOpening + " to " + formattedClosing);
+                    //Log.d(TAG, "Hollywood: " + formattedOpening + " to " + formattedClosing);
                     if (getActivity() != null) {
                         getActivity().runOnUiThread(new Runnable() {
                             @Override

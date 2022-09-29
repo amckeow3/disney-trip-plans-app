@@ -1,33 +1,28 @@
 package com.example.disneytripplanner;
 
-import android.app.ActionBar;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.utils.widget.ImageFilterView;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.PopupMenu;
 
 import com.example.disneytripplanner.databinding.FragmentHomeBinding;
 import com.example.disneytripplanner.models.Park;
-import com.google.android.material.navigation.NavigationBarView;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 
 public class HomeFragment extends Fragment {
     private static final String TAG = "home fragment";
@@ -50,14 +45,12 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = FragmentHomeBinding.inflate(inflater, container, false);
-
         setupUI();
-
         return binding.getRoot();
     }
 
-    public void setupUI() {
 
+    public void setupUI() {
         /*
         binding.imageViewProfileCharacter.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,7 +75,7 @@ public class HomeFragment extends Fragment {
                 popupMenu.show();
             }
         });
-        */
+         */
 
         binding.cardViewMyTrips.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,13 +96,6 @@ public class HomeFragment extends Fragment {
             public void onClick(View view) {
                //mListener.viewWaitTimes();
                 getMkParkObject();
-            }
-        });
-
-        binding.cardViewMyFavorites.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mListener.goToMyFavorites();
             }
         });
     }
@@ -146,7 +132,6 @@ public class HomeFragment extends Fragment {
         super.onAttach(context);
         mListener = (HomeFragmentListener) context;
     }
-
 
     interface HomeFragmentListener {
         void showAccountSetting();

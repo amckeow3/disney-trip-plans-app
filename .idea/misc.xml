@@ -6,48 +6,61 @@
         <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/drawable/add.xml" value="0.1" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/drawable/add_box.xml" value="0.1" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/drawable/arrow_back.xml" value="0.10092592592592593" />
+        <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/drawable/arrow_drop_down.xml" value="0.126" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/drawable/back_arrow.xml" value="0.1" />
+        <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/drawable/blur_image.xml" value="0.125" />
+        <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/drawable/blur_shape.xml" value="0.125" />
+        <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/drawable/calendar.xml" value="0.125" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/drawable/edit_icon.xml" value="0.1" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/drawable/favorite.xml" value="0.1" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/drawable/house.xml" value="0.1" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/drawable/ic_baseline_add_24.xml" value="0.10092592592592593" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/drawable/ic_baseline_add_box_24.xml" value="0.1" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
+        <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/drawable/ic_search_black_24dp.xml" value="0.125" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/drawable/location.xml" value="0.1" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/drawable/menu.xml" value="0.1" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/drawable/next_arrow.xml" value="0.1" />
+        <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/drawable/outline_expand_circle_down.xml" value="0.126" />
+        <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/drawable/outline_home.xml" value="0.125" />
+        <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/drawable/outline_location.xml" value="0.125" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/drawable/search.xml" value="0.1" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/drawable/square.xml" value="0.1" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/drawable/top_shadow_gradient.xml" value="0.24635416666666668" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/drawable/trip_list_icon.xml" value="0.10185185185185185" />
+        <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/drawable/wait_time_icon.xml" value="0.125" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/drawable/wait_times_spinner.xml" value="0.126" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/font/.xml" value="0.28020833333333334" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/font/alata.xml" value="0.21388888888888888" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/layout/attraction_line_item.xml" value="0.264" />
+        <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/layout/dropdown_list_item.xml" value="0.25" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/layout/empty_trips_view.xml" value="0.264" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/layout/fragment_account.xml" value="0.264" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/layout/fragment_create_trip.xml" value="0.264" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/layout/fragment_favorites.xml" value="0.25" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/layout/fragment_filter_wait_times_by_park.xml" value="0.264" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/layout/fragment_filter_wait_times_by_resort.xml" value="0.264" />
-        <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/layout/fragment_home.xml" value="0.2" />
+        <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/layout/fragment_home.xml" value="0.264" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/layout/fragment_location.xml" value="0.25" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/layout/fragment_login.xml" value="0.264" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/layout/fragment_map.xml" value="0.264" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/layout/fragment_my_favorites.xml" value="0.25" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/layout/fragment_my_trips.xml" value="0.264" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/layout/fragment_new_trip.xml" value="0.264" />
-        <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/layout/fragment_park_hours.xml" value="0.264" />
+        <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/layout/fragment_park_hours.xml" value="0.2" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/layout/fragment_registration.xml" value="0.264" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/layout/fragment_search.xml" value="0.2046875" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/layout/fragment_view_trip.xml" value="0.165625" />
-        <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/layout/fragment_wait_times.xml" value="0.264" />
+        <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/layout/fragment_wait_times.xml" value="0.2" />
+        <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/layout/glass_design.xml" value="0.176" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/layout/list_view_item_row.xml" value="0.264" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/layout/park_dropdown_item.xml" value="0.21666666666666667" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/layout/park_hours_line_item.xml" value="0.25" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/layout/park_line_item.xml" value="0.264" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/layout/resort_line_item.xml" value="0.264" />
+        <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/layout/selected_spinner_item.xml" value="0.18697916666666667" />
+        <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/layout/spinner_dropdown_item.xml" value="0.25" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/layout/toolbar.xml" value="0.25" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/layout/trip_line_item.xml" value="0.264" />
         <entry key="..\:/Users/adria/AndroidStudioProjects/DisneyTripPlanner/app/src/main/res/layout/wait_times_spinner.xml" value="0.23333333333333334" />

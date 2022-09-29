@@ -7,36 +7,20 @@
     android:background="@color/white"
     tools:context=".MainActivity">
 
-   <!--
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/topNavBar"
+        app:labelVisibilityMode="labeled"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="start|top"
-        android:backgroundTint="@color/blue_400"
+        android:backgroundTint="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
-            <ImageButton
-                android:id="@+id/buttonMenu"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:background="@color/blue_400"
-                android:minWidth="48dp"
-                android:minHeight="48dp"
-                android:src="@drawable/menu"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:tint="@color/white"
-                tools:ignore="SpeakableTextPresentCheck" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardView4"
@@ -45,39 +29,23 @@
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:layout_marginTop="16dp"
-                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="16dp"
                 app:cardCornerRadius="34dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/buttonSearchApp"
-                app:layout_constraintStart_toEndOf="@+id/buttonMenu"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
                     android:id="@+id/imageViewProfileCharacter"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@color/blue_400"
+                    android:background="@color/purple_primary"
                     android:contentDescription="TODO"
-                    android:src="@drawable/mickey_circle_border" />
+                    android:src="@drawable/pascal" />
             </androidx.cardview.widget.CardView>
-
-            <ImageButton
-                android:id="@+id/buttonSearchApp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="24dp"
-                android:background="@color/blue_400"
-                android:minWidth="48dp"
-                android:minHeight="48dp"
-                android:src="@drawable/search"
-                app:layout_constraintBottom_toBottomOf="@+id/buttonMenu"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/buttonMenu"
-                app:tint="@color/white"
-                tools:ignore="SpeakableTextPresentCheck" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.navigation.NavigationView>
-    -->
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/rootView"
@@ -87,7 +55,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topNavBar"
         app:layout_constraintVertical_bias="0.0">
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -95,6 +63,7 @@
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navigationView"
         android:layout_width="0dp"
+        app:labelVisibilityMode="labeled"
         android:layout_height="wrap_content"
         android:layout_below="@id/rootView"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -121,19 +90,20 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
+
                     <ImageButton
                         android:id="@+id/buttonHome"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
+                        android:layout_marginStart="24dp"
                         android:layout_marginTop="5dp"
-                        android:layout_marginEnd="24dp"
+                        android:layout_marginEnd="16dp"
                         android:layout_marginBottom="8dp"
                         android:background="@color/grey"
                         android:contentDescription=" "
                         android:minWidth="48dp"
                         android:minHeight="48dp"
-                        android:src="@drawable/house"
+                        android:src="@drawable/home_filled"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@id/buttonMaps"
                         app:layout_constraintStart_toStartOf="parent"
@@ -150,9 +120,9 @@
                         android:contentDescription=" "
                         android:minWidth="48dp"
                         android:minHeight="48dp"
-                        android:src="@drawable/location"
+                        android:src="@drawable/location_filled"
                         app:layout_constraintBottom_toBottomOf="@+id/buttonHome"
-                        app:layout_constraintEnd_toStartOf="@id/buttonMyTrips"
+                        app:layout_constraintEnd_toStartOf="@id/buttonSearch"
                         app:layout_constraintStart_toEndOf="@+id/buttonHome"
                         app:layout_constraintTop_toTopOf="@+id/buttonHome"
                         app:tint="@color/light_grey"
@@ -162,20 +132,21 @@
                         android:id="@+id/buttonSearch"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="24dp"
+                        android:layout_marginEnd="16dp"
                         android:background="@color/grey"
                         android:contentDescription=" "
                         android:minWidth="48dp"
                         android:minHeight="48dp"
                         android:src="@drawable/search"
-                        app:layout_constraintBottom_toBottomOf="@+id/buttonMyTrips"
-                        app:layout_constraintEnd_toStartOf="@id/buttonMenu"
-                        app:layout_constraintStart_toEndOf="@+id/buttonMyTrips"
-                        app:layout_constraintTop_toTopOf="@+id/buttonMyTrips"
+                        app:layout_constraintBottom_toBottomOf="@+id/buttonMaps"
+                        app:layout_constraintEnd_toStartOf="@id/buttonFavorites"
+                        app:layout_constraintStart_toEndOf="@+id/buttonMaps"
+                        app:layout_constraintTop_toTopOf="@+id/buttonMaps"
+                        app:layout_constraintVertical_bias="1.0"
                         app:tint="@color/light_grey" />
 
                     <ImageButton
-                        android:id="@+id/buttonMenu"
+                        android:id="@+id/buttonFavorites"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="24dp"
@@ -183,27 +154,11 @@
                         android:contentDescription=" "
                         android:minWidth="48dp"
                         android:minHeight="48dp"
-                        android:src="@drawable/menu"
+                        android:src="@drawable/favorite"
                         app:layout_constraintBottom_toBottomOf="@+id/buttonSearch"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/buttonSearch"
                         app:layout_constraintTop_toTopOf="@+id/buttonSearch"
-                        app:tint="@color/light_grey" />
-
-                    <ImageButton
-                        android:id="@+id/buttonMyTrips"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="24dp"
-                        android:background="@color/grey"
-                        android:contentDescription=" "
-                        android:minWidth="48dp"
-                        android:minHeight="48dp"
-                        android:src="@drawable/trip_list_icon"
-                        app:layout_constraintBottom_toBottomOf="@+id/buttonHome"
-                        app:layout_constraintEnd_toStartOf="@id/buttonSearch"
-                        app:layout_constraintStart_toEndOf="@+id/buttonMaps"
-                        app:layout_constraintTop_toTopOf="@+id/buttonHome"
                         app:tint="@color/light_grey" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>

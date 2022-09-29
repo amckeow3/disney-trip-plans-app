@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 
 import com.example.disneytripplanner.databinding.AttractionLineItemBinding;
 import com.example.disneytripplanner.databinding.FragmentWaitTimesBinding;
@@ -56,13 +57,8 @@ public class WaitTimesFragment extends Fragment {
     String parkQueryId;
     String queueTimesApiId;
     Park selectedPark;
-    String[] parkNames;
-
     String[] parkOptions = {"Magic Kingdom", "Epcot", "Animal Kingdom", "Disney Hollywood Studios"};
-
     ArrayList<Attraction> attractions = new ArrayList<>();
-    ArrayList<Attraction> allAttractions = new ArrayList<>();
-
     AttractionsListAdapter attractionsListAdapter;
     LinearLayoutManager linearLayoutManager;
     RecyclerView recyclerView;
@@ -102,13 +98,11 @@ public class WaitTimesFragment extends Fragment {
                     public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
                         Log.d(TAG, "Park Info(): " + value.getMetadata());
                         for (QueryDocumentSnapshot document: value) {
-                            Log.d(TAG, "Document: " + document.toString());
                             Park park = new Park();
                             park.setId(document.getId());
                             park.setParkName(document.getString("park_name"));
                             park.setQueryId(document.getString("park_id"));
                             park.setQueueTimesApiId(document.getString("queue_times_api_id"));
-                            Log.d(TAG, "apiId: " + park.getQueueTimesApiId());
                             setSelectedPark(park);
                         }
                     }
@@ -136,7 +130,6 @@ public class WaitTimesFragment extends Fragment {
                 if (response.isSuccessful()) {
                     ResponseBody responseBody = response.body();
                     String body = responseBody.string();
-                    Log.d(TAG, "onResponse: " + body);
                     attractions.clear();
 
                     try {
@@ -158,8 +151,7 @@ public class WaitTimesFragment extends Fragment {
                                 attraction.setOpen(attractionJSONObject.getBoolean("is_open"));
                                 attraction.setWaitTime(attractionJSONObject.getInt("wait_time"));
 
-                                Log.d(TAG, "Attraction info ==================>>>>>> " + attraction.toString());
-
+                                //Log.d(TAG, "Attraction info ==================>>>>>> " + attraction);
                                 attractions.add(attraction);
                             }
                         }
@@ -215,7 +207,6 @@ public class WaitTimesFragment extends Fragment {
             Attraction mAttraction;
             int position;
 
-
             public AttractionsViewHolder(@NonNull AttractionLineItemBinding binding) {
                 super(binding.getRoot());
                 mBinding = binding;
@@ -241,8 +232,8 @@ public class WaitTimesFragment extends Fragment {
 
 
     void setupUI() {
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, parkOptions);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), R.layout.selected_spinner_item, parkOptions);
+        adapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
         binding.spinnerParkOptions.setAdapter(adapter);
         binding.spinnerParkOptions.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -250,8 +241,6 @@ public class WaitTimesFragment extends Fragment {
                 Log.v("item", (String) parent.getItemAtPosition(position));
                 String parkName = parent.getItemAtPosition(position).toString();
                 getParkInfo(parkName);
-                //mListener.sendSelectedPark(selectedPark);
-                //mListener.sendSelectedPark(parkName);
             }
 
             @Override

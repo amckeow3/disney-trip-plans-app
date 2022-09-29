@@ -12,8 +12,11 @@
     <!--<color name="blue_400">#22A3FA</color>-->
     <color name="blue_600">#3949AB</color>
     <color name="dark_grey">#4A4A4A</color>
-    <color name="light_grey">#8C8C8C</color>
+    <color name="light_grey">#9C9898</color>
     <color name="blue_400">#22C3F3</color>
-
+    <color name="lavendar_blue">#BEC4FE</color>
     <color name="navy_blue">#1D1539</color>
+    <color name="dull_blue">#6C9EFC</color>
+    <color name="purple_primary">#C353FF</color>
+    <color name="orange">#FFB300</color>
 </resources>

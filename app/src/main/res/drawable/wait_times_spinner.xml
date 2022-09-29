@@ -1,4 +1,20 @@
-<shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <stroke android:color="@color/blue_400" android:width="3dp" />
-    <corners android:radius="10dp"/>
-</shape>
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <layer-list>
+            <item>
+                <shape android:shape="rectangle">
+                    <stroke android:color="@color/white" android:width="3dp"/>
+                    <padding android:right="10dp"
+                        android:left="10dp" />
+                    <corners android:radius="4dp"/>
+                </shape>
+            </item>
+            <!--
+            <item
+                android:drawable="@drawable/outline_expand_circle_down"
+                android:gravity="center_vertical|right">
+            </item>-->
+        </layer-list>
+    </item>
+</selector>

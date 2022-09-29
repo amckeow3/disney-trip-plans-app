@@ -13,8 +13,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewParent;
 import android.widget.Toast;
 
+import com.example.disneytripplanner.MainActivity;
 import com.example.disneytripplanner.databinding.FragmentLoginBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -25,6 +27,7 @@ import com.google.firebase.auth.FirebaseUser;
 public class LoginFragment extends Fragment {
     LoginFragment.LoginFragmentListener mListener;
     FragmentLoginBinding binding;
+    View view;
 
     private static final String TAG = "Login Frag";
     private FirebaseAuth mAuth;
@@ -36,14 +39,12 @@ public class LoginFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentLoginBinding.inflate(inflater, container, false);
-
 
         binding.buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
