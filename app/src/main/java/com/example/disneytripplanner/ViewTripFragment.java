@@ -11,6 +11,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.disneytripplanner.databinding.FragmentHomeBinding;
+import com.example.disneytripplanner.databinding.FragmentNewTripBinding;
 import com.example.disneytripplanner.models.Trip;
 
 public class ViewTripFragment extends Fragment {
@@ -20,6 +22,7 @@ public class ViewTripFragment extends Fragment {
     String startDate;
     String endDate;
     String description;
+    FragmentNewTripBinding binding;
 
     public ViewTripFragment() {
         // Required empty public constructor
@@ -48,7 +51,9 @@ public class ViewTripFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_view_trip, container, false);
+        binding = FragmentNewTripBinding.inflate(inflater, container, false);
+
+        return binding.getRoot();
     }
 
     @Override

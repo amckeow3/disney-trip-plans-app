@@ -1,21 +1,16 @@
 package com.example.disneytripplanner;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
-import android.graphics.Color;
-import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.widget.PopupMenu;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.constraintlayout.utils.widget.ImageFilterView;
 import androidx.fragment.app.Fragment;
-
 import com.example.disneytripplanner.databinding.FragmentHomeBinding;
 import com.example.disneytripplanner.models.Park;
 import com.google.firebase.auth.FirebaseAuth;
@@ -31,38 +26,16 @@ public class HomeFragment extends Fragment {
     FragmentHomeBinding binding;
     private FirebaseAuth mAuth;
 
-    public HomeFragment() {
-        // Required empty public constructor
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        mAuth = FirebaseAuth.getInstance();
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        binding = FragmentHomeBinding.inflate(inflater, container, false);
-        setupUI();
-        return binding.getRoot();
-    }
-
-
     public void setupUI() {
-        /*
         binding.imageViewProfileCharacter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 PopupMenu popupMenu = new PopupMenu(getActivity().getApplicationContext(), binding.imageViewProfileCharacter);
 
-                popupMenu.getMenuInflater().inflate(R.menu.profile_pic_dropdown_menu, popupMenu.getMenu());
+                popupMenu.getMenuInflater().inflate(R.menu.dropdown_menu, popupMenu.getMenu());
                 popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick(MenuItem menuItem) {
-                        Log.d(TAG, "onMenuItemClick: Item Clicked " + menuItem.getTitle());
                         if (menuItem.getTitle().toString().matches("Account")) {
                             mListener.showAccountSetting();
                         } else if (menuItem.getTitle().toString().matches("Sign Out")) {
@@ -76,10 +49,9 @@ public class HomeFragment extends Fragment {
                 popupMenu.show();
             }
         });
-         */
 
         getUserFirstName();
-
+        
         binding.cardViewMyTrips.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -97,17 +69,10 @@ public class HomeFragment extends Fragment {
         binding.cardViewWaitTimes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               //mListener.viewWaitTimes();
+                //mListener.viewWaitTimes();
                 getMkParkObject();
             }
         });
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-        mAuth = FirebaseAuth.getInstance();
     }
 
     void getMkParkObject() {
@@ -145,6 +110,31 @@ public class HomeFragment extends Fragment {
                     }
                 });
     }
+    public HomeFragment() {
+        // Required empty public constructor
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mAuth = FirebaseAuth.getInstance();
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        binding = FragmentHomeBinding.inflate(inflater, container, false);
+        setupUI();
+        return binding.getRoot();
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        mAuth = FirebaseAuth.getInstance();
+    }
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -156,7 +146,6 @@ public class HomeFragment extends Fragment {
         void showAccountSetting();
         void goToLogin();
         void viewMyTrips();
-        void goToMyFavorites();
         void viewParkHours();
         void viewWaitTimes(Park park);
     }

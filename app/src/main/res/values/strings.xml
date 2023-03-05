@@ -13,8 +13,8 @@
     <string name="cancel">Cancel</string>
     <string name="save">Save</string>
     <string name="trip_name">Trip Name *</string>
-    <string name="check_out_date">Check-out Date *</string>
-    <string name="check_in_date">Check-in Date *</string>
+    <string name="start_date">Start Date *</string>
+    <string name="end_date">End Date *</string>
     <string name="description">Description (optional)</string>
     <string name="hint_date">dd/mm/yyyy</string>
     <string name="select_dates">Select Trip Dates</string>
@@ -45,5 +45,6 @@
         <item>Disney Hollywood Studios</item>
     </string-array>
     <string name="hello_txt">Hello,</string>
-    <string name="create_trip_txt">Create Trip</string>
+    <string name="create_trip_txt">New Trip</string>
+    <string name="continue_txt">Continue</string>
 </resources>

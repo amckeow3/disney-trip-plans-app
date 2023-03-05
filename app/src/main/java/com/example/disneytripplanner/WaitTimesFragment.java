@@ -15,8 +15,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
-
 import com.example.disneytripplanner.databinding.AttractionLineItemBinding;
 import com.example.disneytripplanner.databinding.FragmentWaitTimesBinding;
 import com.example.disneytripplanner.models.Attraction;
@@ -26,16 +24,11 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.List;
-
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.OkHttpClient;
@@ -63,29 +56,6 @@ public class WaitTimesFragment extends Fragment {
     LinearLayoutManager linearLayoutManager;
     RecyclerView recyclerView;
 
-    public WaitTimesFragment() {
-        // Required empty public constructor
-    }
-
-    public static WaitTimesFragment newInstance(Park park) {
-        WaitTimesFragment fragment = new WaitTimesFragment();
-        Bundle args = new Bundle();
-        args.putSerializable(ARG_PARAM_PARK, park);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            parkObject = (Park) getArguments().getSerializable(ARG_PARAM_PARK);
-            parkName = parkObject.getParkName();
-            parkQueryId = parkObject.getQueryId();
-            queueTimesApiId = parkObject.getQueueTimesApiId();
-        }
-    }
-
     void getParkInfo(String parkName) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
@@ -96,7 +66,6 @@ public class WaitTimesFragment extends Fragment {
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
                     public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
-                        Log.d(TAG, "Park Info(): " + value.getMetadata());
                         for (QueryDocumentSnapshot document: value) {
                             Park park = new Park();
                             park.setId(document.getId());
@@ -151,7 +120,6 @@ public class WaitTimesFragment extends Fragment {
                                 attraction.setOpen(attractionJSONObject.getBoolean("is_open"));
                                 attraction.setWaitTime(attractionJSONObject.getInt("wait_time"));
 
-                                //Log.d(TAG, "Attraction info ==================>>>>>> " + attraction);
                                 attractions.add(attraction);
                             }
                         }
@@ -221,17 +189,8 @@ public class WaitTimesFragment extends Fragment {
         }
     }
 
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        binding = FragmentWaitTimesBinding.inflate(inflater, container, false);
-        setupUI();
-        return binding.getRoot();
-    }
-
-
     void setupUI() {
+        getActivity().setTitle("Wait Times");
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), R.layout.selected_spinner_item, parkOptions);
         adapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
         binding.spinnerParkOptions.setAdapter(adapter);
@@ -248,6 +207,36 @@ public class WaitTimesFragment extends Fragment {
                 // TODO Auto-generated method stub
             }
         });
+    }
+
+    public WaitTimesFragment() {
+        // Required empty public constructor
+    }
+
+    public static WaitTimesFragment newInstance(Park park) {
+        WaitTimesFragment fragment = new WaitTimesFragment();
+        Bundle args = new Bundle();
+        args.putSerializable(ARG_PARAM_PARK, park);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            parkObject = (Park) getArguments().getSerializable(ARG_PARAM_PARK);
+            parkName = parkObject.getParkName();
+            parkQueryId = parkObject.getQueryId();
+            queueTimesApiId = parkObject.getQueueTimesApiId();
+        }
+    }
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        binding = FragmentWaitTimesBinding.inflate(inflater, container, false);
+        setupUI();
+        return binding.getRoot();
     }
 
     @Override

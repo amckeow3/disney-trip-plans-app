@@ -2,9 +2,9 @@
     <!-- Base application theme. -->
     <style name="Theme.DisneyTripPlanner" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Primary brand color.-->
-        <item name="colorPrimary">@color/blue_400</item>
+        <item name="colorPrimary">@color/purple_primary</item>
         <item name="colorPrimaryDark">@color/blue_600</item>
-        <item name="colorAccent">@color/white</item>
+        <item name="colorAccent">@color/blue_primary</item>
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
 
@@ -20,7 +20,6 @@
 
     <style name="CalenderViewDateCustomText" parent="android:TextAppearance.DeviceDefault.Small">
         <item name="android:textColor">@color/blue_400</item>
-        <item name="android:textAppearance"></item>
     </style>
 
     <style name="CalenderViewWeekCustomText" parent="android:TextAppearance.DeviceDefault.Small">

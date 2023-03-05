@@ -4,10 +4,10 @@
         <layer-list>
             <item>
                 <shape android:shape="rectangle">
-                    <stroke android:color="@color/white" android:width="3dp"/>
-                    <padding android:right="10dp"
-                        android:left="10dp" />
-                    <corners android:radius="4dp"/>
+                    <stroke android:color="@color/white" android:width="1dp" />
+                    <padding android:right="0dp"
+                        android:left="0dp" />
+                    <!--<corners android:radius="4dp"/>-->
                 </shape>
             </item>
             <!--

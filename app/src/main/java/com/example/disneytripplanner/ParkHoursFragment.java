@@ -48,9 +48,7 @@ public class ParkHoursFragment extends Fragment {
     ArrayList<ParkHours> hollywoodStudiosHours = new ArrayList<>();
     ArrayList<ParkHours> allParkHours = new ArrayList<>();
     ArrayList<ParkHours> matchingParkHours = new ArrayList<>();
-    String todaysDate;
     String dateSelected;
-    Date dateToMatch;
     Date epcotOpeningTime;
     Date epcotClosingTime;
     Date dakOpeningTime;
@@ -245,43 +243,22 @@ public class ParkHoursFragment extends Fragment {
         getHollywoodStudiosHours();
     }
 
-    public ParkHoursFragment() {
-        // Required empty public constructor
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        binding = FragmentParkHoursBinding.inflate(inflater, container, false);
-
-        return binding.getRoot();
-    }
-
     void setupUI() {
+        getActivity().setTitle("Park Hours");
         Calendar calendar = Calendar.getInstance();
 
         Date todaysDate = calendar.getTime();
         String todaysDateformatted = sdf.format(todaysDate);
-        setTodaysDate(todaysDateformatted);
+        setDateSelected(todaysDateformatted);
 
         getHoursForAllParks();
-    }
 
-    void setTodaysDate(String date) {
-        todaysDate = date;
-    }
+        //binding.textViewSelectedDate.setText(todaysDateformatted);
 
-    /*
-    void setupUI() {
         getTodaysDate();
-        binding.calendarViewParkHours.setMinDate(new Date().getTime());
+        binding.parkHoursDatePicker.setMinDate(new Date().getTime());
 
-        binding.calendarViewParkHours.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+        binding.parkHoursDatePicker.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
                 Calendar calendar = Calendar.getInstance();
@@ -296,18 +273,9 @@ public class ParkHoursFragment extends Fragment {
                 binding.textViewSelectedDate.setText(dateString);
             }
         });
-        
-        binding.buttonBackFromParkHours.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mListener.goToHomePage();
-            }
-        });
     }
 
-
-
-    void getTodaysDate() {
+    private void getTodaysDate() {
         Calendar calendar = Calendar.getInstance();
         int dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
         int month = calendar.get(Calendar.MONTH);
@@ -322,10 +290,10 @@ public class ParkHoursFragment extends Fragment {
         binding.textViewSelectedDate.setText(dateString);
     }
 
-    public void setDateSelected(String sDate) {
+    private void setDateSelected(String sDate) {
         dateSelected = sDate;
     }
-    
+
     String dayOfWeekToString(int dayOfWeek) {
         String dayOfWeekString;
         switch(dayOfWeek) {
@@ -357,8 +325,6 @@ public class ParkHoursFragment extends Fragment {
         return dayOfWeekString;
     }
 
-     */
-
     void getEpcotHoursForDate(ArrayList<ParkHours> epcot) {
        for (int i = 0; i < epcot.size(); i++) {
            ParkHours epcotHours = epcot.get(i);
@@ -367,7 +333,7 @@ public class ParkHoursFragment extends Fragment {
                DateFormat inputDateFormat = new SimpleDateFormat("yyyy-MM-dd");
                Date parsedDate = inputDateFormat.parse(sDate);
                String formattedInputDate = sdf.format(parsedDate);
-               if (formattedInputDate.equals(todaysDate)) {
+               if (formattedInputDate.equals(dateSelected)) {
                    Log.d(TAG, "epcotHoursForSelectedDay: " + parsedDate);
                    epcotOpeningTime = dateTimeFormatter.parse(epcotHours.getOpeningTime());
                    epcotClosingTime = dateTimeFormatter.parse(epcotHours.getClosingTime());
@@ -398,7 +364,7 @@ public class ParkHoursFragment extends Fragment {
                 DateFormat inputDateFormat = new SimpleDateFormat("yyyy-MM-dd");
                 Date parsedDate = inputDateFormat.parse(sDate);
                 String formattedInputDate = sdf.format(parsedDate);
-                if (formattedInputDate.equals(todaysDate)) {
+                if (formattedInputDate.equals(dateSelected)) {
                     Log.d(TAG, "dakHoursForSelectedDay: " + parsedDate);
                     dakOpeningTime = dateTimeFormatter.parse(dakHours.getOpeningTime());
                     dakClosingTime = dateTimeFormatter.parse(dakHours.getClosingTime());
@@ -428,7 +394,7 @@ public class ParkHoursFragment extends Fragment {
                 DateFormat inputDateFormat = new SimpleDateFormat("yyyy-MM-dd");
                 Date parsedDate = inputDateFormat.parse(sDate);
                 String formattedInputDate = sdf.format(parsedDate);
-                if (formattedInputDate.equals(todaysDate)) {
+                if (formattedInputDate.equals(dateSelected)) {
                     Log.d(TAG, "mkHoursForSelectedDay: " + parsedDate);
                     mkOpeningTime = dateTimeFormatter.parse(mkHours.getOpeningTime());
                     mkClosingTime = dateTimeFormatter.parse(mkHours.getClosingTime());
@@ -458,7 +424,7 @@ public class ParkHoursFragment extends Fragment {
                 DateFormat inputDateFormat = new SimpleDateFormat("yyyy-MM-dd");
                 Date parsedDate = inputDateFormat.parse(sDate);
                 String formattedInputDate = sdf.format(parsedDate);
-                if (formattedInputDate.equals(todaysDate)) {
+                if (formattedInputDate.equals(dateSelected)) {
                     Log.d(TAG, "hollywoodHoursForSelectedDay: " + parsedDate);
                     hsOpeningTime = dateTimeFormatter.parse(hsHours.getOpeningTime());
                     hsClosingTime = dateTimeFormatter.parse(hsHours.getClosingTime());
@@ -479,6 +445,24 @@ public class ParkHoursFragment extends Fragment {
             }
         }
     }
+
+    public ParkHoursFragment() {
+        // Required empty public constructor
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        binding = FragmentParkHoursBinding.inflate(inflater, container, false);
+
+        return binding.getRoot();
+    }
+
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {

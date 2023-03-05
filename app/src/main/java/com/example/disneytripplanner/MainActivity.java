@@ -1,5 +1,6 @@
 package com.example.disneytripplanner;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -7,6 +8,8 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.example.disneytripplanner.auth.LoginFragment;
@@ -14,6 +17,7 @@ import com.example.disneytripplanner.auth.RegistrationFragment;
 import com.example.disneytripplanner.databinding.ActivityMainBinding;
 import com.example.disneytripplanner.models.Park;
 import com.example.disneytripplanner.models.Trip;
+import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
@@ -25,17 +29,13 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 
 public class MainActivity extends AppCompatActivity implements LoginFragment.LoginFragmentListener, RegistrationFragment.RegistrationFragmentListener, HomeFragment.HomeFragmentListener,
         AccountFragment.AccountFragmentListener, NewTripFragment.NewTripFragmentListener, MyTripsFragment.MyTripsFragmentListener, MapFragment.MapFragmentListener,
-        WaitTimesFragment.WaitTimesFragmentListener, FavoritesFragment.FavoritesFragmentListener, ParkHoursFragment.ParkHoursFragmentListener, ViewTripFragment.ViewTripFragmentListener {
+        WaitTimesFragment.WaitTimesFragmentListener, FavoritesFragment.FavoritesFragmentListener, ParkHoursFragment.ParkHoursFragmentListener, ViewTripFragment.ViewTripFragmentListener,
+        SelectTripDatesFragment.SelectTripDatesFragmentListener {
 
+    private static final String TAG = "Main Activity";
     private FirebaseAuth mAuth;
-    public static ViewPager2 viewPager;
-    private static final int NUM_PAGES = 4;
-    TabLayout tabLayout;
-    private FragmentStateAdapter pagerAdapter;
-    NavigationView bottomNav;
     ActivityMainBinding binding;
 
-    String[] tabTitles = new String[]{"Home", "Account", "My Trips", "Wait Times"};
     //#3498DB
     // https://api.themeparks.wiki/v1/destinations --> Gets all destinations
     // https://api.themeparks.wiki/v1/entity/e957da41-3552-4cf6-b636-5babc5cbc4e5 --> Example to get wdw data
@@ -44,39 +44,33 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.Log
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        bottomNav = findViewById(R.id.navigationView);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
 
-        findViewById(R.id.buttonHome).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showBottomNavigation();
-                getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.rootView, new HomeFragment(), "home-fragment")
-                        .addToBackStack(null)
-                        .commit();
-            }
-        });
+        setSupportActionBar(binding.topAppBar);
 
-        /*
-        findViewById(R.id.buttonMyTrips).setOnClickListener(new View.OnClickListener() {
+        binding.bottomNavMenu.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
-            public void onClick(View view) {
-                getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.rootView, new MyTripsFragment(), "my-trips-fragment")
-                        .addToBackStack(null)
-                        .commit();
-            }
-        });
-         */
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int id = item.getItemId();
 
-        findViewById(R.id.buttonMaps).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showBottomNavigation();
-                getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.rootView, new MapFragment(), "maps-fragment")
-                        .addToBackStack(null)
-                        .commit();
+                switch (id) {
+                    case R.id.homeButton:
+                        goToHomePage();
+                        break;
+                    case R.id.mapButton:
+                        openMapView();
+                        break;
+                    case R.id.optionsButton:
+                        createNewTrip();
+                        break;
+                    case R.id.searchButton:
+                        Log.d(TAG, "Implement Search Fragment");
+                        break;
+                }
+
+                return true;
             }
         });
 
@@ -84,29 +78,33 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.Log
         FirebaseUser user = mAuth.getCurrentUser();
 
         if (user == null) {
-            hideBottomNavigation();
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.rootView, new LoginFragment(), "login-fragment")
-                    .commit();
+            hideTopAppBar();
+            goToLogin();
         } else {
-            showBottomNavigation();
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.rootView, new HomeFragment(), "home-fragment")
-                    .commit();
+            goToHomePage();
         }
     }
 
     @Override
     public void goToHomePage() {
-        showBottomNavigation();
+        hideTopAppBar();
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.rootView, new HomeFragment(), "home-fragment")
                 .commit();
     }
 
     @Override
+    public void selectTripDates() {
+        hideTopAppBar();
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.rootView, new SelectTripDatesFragment(), "select-trip-dates-fragment")
+                .addToBackStack(null)
+                .commit();
+    }
+
+    @Override
     public void viewSelectedTrip(Trip trip) {
-        showBottomNavigation();
+        showTopAppBar();
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.rootView, ViewTripFragment.newInstance(trip), "home-fragment")
                 .commit();
@@ -114,13 +112,13 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.Log
 
     @Override
     public void backToLogin() {
-        hideBottomNavigation();
+        hideTopAppBar();
         getSupportFragmentManager().popBackStack();
     }
 
     @Override
     public void goToRegistration() {
-        hideBottomNavigation();
+        hideTopAppBar();
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.rootView, new RegistrationFragment(), "registration-fragment")
                 .addToBackStack(null)
@@ -129,7 +127,7 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.Log
 
     @Override
     public void showAccountSetting() {
-        showBottomNavigation();
+        showTopAppBar();
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.rootView, new AccountFragment(), "account-fragment")
                 .addToBackStack(null)
@@ -138,7 +136,7 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.Log
 
     @Override
     public void goToLogin() {
-        hideBottomNavigation();
+        hideTopAppBar();
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.rootView, new LoginFragment())
                 .commit();
@@ -146,7 +144,7 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.Log
 
     @Override
     public void createNewTrip() {
-        showBottomNavigation();
+        hideTopAppBar();
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.rootView, new NewTripFragment(), "new-trip-fragment")
                 .addToBackStack(null)
@@ -155,7 +153,7 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.Log
 
     @Override
     public void viewMyTrips() {
-        showBottomNavigation();
+        showTopAppBar();
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.rootView, new MyTripsFragment(), "my-trips-fragment")
                 .addToBackStack(null)
@@ -163,48 +161,42 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.Log
     }
 
     @Override
-    public void goToMyFavorites() {
-        showBottomNavigation();
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.rootView, new FavoritesFragment(), "favorites-fragment")
-                .addToBackStack(null)
-                .commit();
-    }
-
-    @Override
     public void viewParkHours() {
-        showBottomNavigation();
+        showTopAppBar();
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.rootView, new ParkHoursFragment(), "park-hours-fragment")
                 .addToBackStack(null)
                 .commit();
     }
 
+    public void openMapView() {
+        showTopAppBar();
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.rootView, new MapFragment(), "map-fragment")
+                .addToBackStack(null)
+                .commit();
+    }
+
     @Override
     public void cancelNewTrip() {
-        showBottomNavigation();
         getSupportFragmentManager()
                 .popBackStack();
     }
 
     @Override
     public void viewWaitTimes(Park park) {
-        showBottomNavigation();
+        showTopAppBar();
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.rootView, WaitTimesFragment.newInstance(park), "wait-times-fragment")
                 .addToBackStack(null)
                 .commit();
     }
 
-    public void hideBottomNavigation() {
-        if (bottomNav.getVisibility() == View.VISIBLE) {
-            bottomNav.setVisibility(View.GONE);
-        }
+    public void hideTopAppBar() {
+        binding.topAppBar.setVisibility(View.GONE);
     }
 
-    public void showBottomNavigation() {
-        if (bottomNav.getVisibility() == View.GONE) {
-            bottomNav.setVisibility(View.VISIBLE);
-        }
+    public void showTopAppBar() {
+        binding.topAppBar.setVisibility(View.VISIBLE);
     }
 }

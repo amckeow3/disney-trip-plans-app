@@ -2,10 +2,10 @@
 <TextView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:textSize="20dp"
-    android:textColor="@color/light_grey"
+    android:textColor="@color/dark_grey"
+    android:textSize="20sp"
     android:fontFamily="@font/poppins"
     android:backgroundTint="@color/white"
-    android:padding="5dp">
+    android:padding="2dp">
 
 </TextView>

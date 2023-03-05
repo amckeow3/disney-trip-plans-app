@@ -57,6 +57,7 @@
         android:text="@string/create_my_first_trip"
         android:textAllCaps="false"
         android:textColor="@color/purple_primary"
+        android:background="@drawable/rounded_corners_button"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/textViewNoTripsSub"
         app:layout_constraintStart_toStartOf="@+id/textViewNoTripsSub"
